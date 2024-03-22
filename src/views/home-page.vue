@@ -5,7 +5,7 @@
       class="mx-0 bg-accent"
       align="center"
       :style="`padding: ${
-        $vuetify.display.mdAndDown ? '6.7em 1em' : '5.5em 2em'
+        $vuetify.display.mdAndDown ? '5.7em 1em' : '5.5em 2em'
       }`"
       justify="center"
     >
@@ -24,7 +24,7 @@
         </p>
       </VCol>
       <VCol cols="12" md="6">
-        <VCard variant="flat" color="transparent" tile>
+        <VCard variant="flat" color="transparent" class="rounded-pill">
           <v-img
             src="https://images.ctfassets.net/s384oqk42kco/7pihbnmyU2Dr3xsDPWjKtz/a9250128785463052c02101afc12be45/parcelperform-seo-image.webp"
             cover
