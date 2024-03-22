@@ -221,7 +221,7 @@ import { ref } from "vue";
 import { computed } from "vue";
 let tranX = ref(0);
 
-const translate = setInterval(() => {
+setInterval(() => {
   tranX.value -= 10;
   if (tranX.value == -200) {
     tranX.value = 0;
