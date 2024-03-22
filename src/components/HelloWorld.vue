@@ -1,6 +1,20 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <VCol cols="12">
+      <v-btn
+        :loading="false"
+        color="primary"
+        variant="tonal"
+        icon="fa-home"
+        block
+        tile
+        @click="changeTheme"
+      >
+      </v-btn
+    ></VCol>
+    <!-- <v-icon color="red" icon="fa-cog fa-spin fa-3x fa-fw" size="large"></v-icon> -->
+    <p class="text-primary-lighten-4">{{ x }} is pageX</p>
+    <p>{{ y }} is pageY</p>
     <p>
       For a guide and recipes on how to configure / customize this project,<br />
       check out the
@@ -110,13 +124,23 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "HelloWorld",
-  props: {
-    msg: String,
-  },
+<script setup>
+import { ref, inject } from "vue";
+import { text } from "@/composables/testrun";
+import { useTheme } from "vuetify/lib/framework.mjs";
+
+const { x, y } = text();
+const theme = useTheme();
+
+const changeTheme = () => {
+  theme.global.name.value = theme.global.current.value.dark ? "light" : "dark";
+  console.log(theme.name);
 };
+defineProps({
+  msg: {
+    type: String,
+  },
+});
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

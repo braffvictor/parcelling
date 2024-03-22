@@ -1,11 +1,28 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <VApp>
+    <div>
+      <user-layout v-if="route.meta.layout == 'user'">
+        <router-view />
+      </user-layout>
+
+      <admin-layout v-if="route.meta.layout == 'admin'">
+        <!-- <nav>
+        <router-link to="/">Home Admin</router-link> |
+        <router-link to="/about">About Admin</router-link>
+      </nav> -->
+        <router-view />
+      </admin-layout>
+    </div>
+  </VApp>
 </template>
 
+<script setup>
+import { useRoute } from "vue-router";
+import userLayout from "./layouts/userLayout.vue";
+import adminLayout from "./layouts/adminLayout.vue";
+
+const route = useRoute();
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
