@@ -4,7 +4,7 @@
       class="mx-0 bg-accent"
       align="center"
       :style="`padding: ${
-        $vuetify.display.mdAndDown ? '5.7em 1em' : '5.5em 2em'
+        $vuetify.display.mdAndDown ? '3.3em 1em' : '5.5em 2em'
       }`"
       justify="center"
     >
