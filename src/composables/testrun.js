@@ -1,8 +1,6 @@
 import { onMounted, ref } from "vue";
 
 export function text() {
-  const texting = ref("The text here");
-
   const x = ref(100);
   const y = ref("");
 
