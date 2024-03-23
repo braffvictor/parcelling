@@ -364,7 +364,7 @@ const links = computed(() => {
     },
     {
       name: "About Us",
-      to: "/about-us",
+      to: "/about",
       icon: "fa-globe fa-spin ",
       img: "https://images.ctfassets.net/s384oqk42kco/1X8dbPpmzYTr5KNSPmEsaW/25bc40e34fae91f567c6d0f114d1931a/Group_4082.svg",
     },
