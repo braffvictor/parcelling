@@ -189,7 +189,7 @@
 
     <!-- now the main footer -->
     <VFooter height="auto" class="bg-accent">
-      <v-row class="mx-0 px-0" justify="center" align="start">
+      <v-row class="mx-0 px-0 bgfooter" justify="center" align="start">
         <VCol cols="12" md="6">
           <div class="w-100">
             <v-img
@@ -401,6 +401,11 @@ const locations = computed(() => {
 .footer-bg {
   background-image: url(https://images.ctfassets.net/s384oqk42kco/2Qb6RS1DZeUzU4sQPu2UUk/fa2f03dbde179bb8754f1e01527dfea8/leads_form_background_image.webp);
   background-position: center;
+  background-size: cover;
+}
+.bgfooter {
+  background-image: url(https://www.parcelmonitor.com/_next/image?url=%2Fimages%2Ffooter-background.svg&w=1920&q=75);
+  background-position: right;
   background-size: cover;
 }
 </style>
