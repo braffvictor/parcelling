@@ -4,7 +4,7 @@
       class="mx-0 bg-accent"
       align="center"
       :style="`padding: ${
-        $vuetify.display.mdAndDown ? '3.3em 1em' : '5.5em 2em'
+        $vuetify.display.mdAndDown ? '3.3em 1em' : '5em 2em'
       }`"
       justify="center"
     >
@@ -58,6 +58,92 @@
         <p class="text-grey text-subtitle-1">{{ speck.text }}</p>
       </VCol>
     </v-row>
+
+    <vContainer>
+      <VRow
+        class="mx-0"
+        align="center"
+        :style="`padding: ${
+          $vuetify.display.mdAndDown ? '3em 1em' : '2em 2em'
+        }`"
+        justify="center"
+      >
+        <VCol cols="12" md="6">
+          <VCard variant="flat" color="transparent" class="">
+            <v-img
+              src="https://images.ctfassets.net/s384oqk42kco/frShgV3IK3L5YsdqGOX7u/470f1c18dd3723b09e8e6c3dc4b46c5f/Logistics_Leaders.png"
+              cover
+            ></v-img>
+          </VCard>
+        </VCol>
+        <VCol cols="12" md="6">
+          <p
+            class="text-h4 text-md-h2 text-accent font-weight-bold text-center text-md-left"
+          >
+            We Are <span class="text-primary">Growth Frontiers</span>
+          </p>
+          <p
+            class="text-body-2 my-4 text-grey text-center text-md-left font-weight-light"
+          >
+            You'll thrive on the beneficial implications of your role - you'll
+            play an integral part in creating connections that deliver
+            opportunity and prosperity all over the world. Our concerns go far
+            beyond the people who work for us. Which is why we support
+            initiatives impacting the environment and our society. We provide
+            plenty of opportunities to develop your role and gain knowledge and
+            experience. We'll also ensure we reward your hard work at a
+            competitive rate.
+          </p>
+        </VCol>
+      </VRow>
+    </vContainer>
+
+    <vContainer>
+      <VRow
+        class="mx-0"
+        align="center"
+        :style="`padding: ${
+          $vuetify.display.mdAndDown ? '3em 4em' : '2em 6em'
+        }`"
+      >
+        <VCol cols="12" class="my-3 my-md-6">
+          <p class="text-h4 text-md-h3 font-weight-bold">
+            <span class="text-primary">Perks</span> of Working With Us
+          </p>
+        </VCol>
+        <VCol cols="12" md="4">
+          <div
+            class="d-flex my-5 my-md-10"
+            style="gap: 7px"
+            v-for="perk in perks"
+            :key="perk.icon"
+          >
+            <VIcon :icon="perk.icon" size="x-small"></VIcon>
+            <div>{{ perk.text }}</div>
+          </div>
+        </VCol>
+        <VCol cols="12" md="4">
+          <VCard variant="flat">
+            <v-img
+              class="text-center mx-auto"
+              src="https://www.parcelpending.com/wp-content/uploads/2021/07/Group-720-2.png"
+            >
+            </v-img>
+          </VCard>
+        </VCol>
+        <VCol cols="12" md="4">
+          <div
+            class="d-flex my-5 my-md-10"
+            style="gap: 7px"
+            v-for="perk in perks"
+            :key="perk.icon"
+          >
+            <VIcon :icon="perk.icon" size="x-small"></VIcon>
+            <div>{{ perk.text }}</div>
+          </div>
+        </VCol>
+      </VRow>
+    </vContainer>
   </div>
 </template>
 <script setup>
@@ -80,6 +166,23 @@ const specks = computed(() => {
     {
       number: "5",
       text: "offices globally",
+    },
+  ];
+});
+
+const perks = computed(() => {
+  return [
+    {
+      icon: "fa-medkit",
+      text: "Healthcare Coverage",
+    },
+    {
+      icon: "fa-calendar",
+      text: "Paid Time Off/Time Away",
+    },
+    {
+      icon: "fa-headphones",
+      text: "Employee Assistance Plan",
     },
   ];
 });
