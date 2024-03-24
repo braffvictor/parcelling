@@ -12,6 +12,8 @@
           src="https://www.parcelperform.com/images/parcel-perform-logo.svg"
           min-width="160"
           max-width="200"
+          @click="$router.push('/')"
+          class="cursor-pointer"
         ></v-img>
       </div>
 
@@ -79,8 +81,10 @@
       </VCard>
     </VNavigationDrawer>
 
-    <v-main class="">
-      <slot></slot>
+    <v-main class="bg-accent">
+      <Transition duration="200">
+        <slot></slot>
+      </Transition>
     </v-main>
 
     <!-- somewhat footer form component -->
@@ -314,6 +318,7 @@ import { computed, ref } from "vue";
 import { useRoute } from "vue-router";
 
 const route = useRoute();
+
 const drawer = ref(false);
 
 // form data
@@ -407,5 +412,15 @@ const locations = computed(() => {
   background-image: url(https://www.parcelmonitor.com/_next/image?url=%2Fimages%2Ffooter-background.svg&w=1920&q=75);
   background-position: right;
   background-size: cover;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>

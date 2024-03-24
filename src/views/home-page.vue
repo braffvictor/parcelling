@@ -217,8 +217,17 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { computed } from "vue";
+
+onMounted(() => {
+  window.scrollTo({
+    top: 100,
+    left: 100,
+    behavior: "auto",
+  });
+});
+
 let tranX = ref(0);
 
 setInterval(() => {
