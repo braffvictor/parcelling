@@ -7,6 +7,9 @@ module.exports = defineConfig({
     appleMobileWebAppCache: "yes",
     manifestOptions: {
       background_color: "#001b3a",
+      name: "Parcelling",
+      short_name: "Parcling",
+      theme_color: "#001b3a",
     },
   },
 });

@@ -25,6 +25,10 @@
               :to="link.to"
               color="white"
               variant="text"
+              class="pt-3"
+              :style="`border-bottom: ${
+                route.path == link.to ? '2px solid #ea580c' : ''
+              }; height: 92%`"
               size="large"
               v-for="link in links"
               :key="link.name"
@@ -39,7 +43,7 @@
           v-for="link in links"
           :key="link.name"
           >{{ link.name }}</VBtn
-        > -->
+          > -->
       </div>
 
       <div class="d-block d-md-none mx-4">
@@ -82,7 +86,7 @@
     </VNavigationDrawer>
 
     <v-main class="bg-accent">
-      <Transition duration="200">
+      <Transition duration="1000">
         <slot></slot>
       </Transition>
     </v-main>

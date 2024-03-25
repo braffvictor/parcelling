@@ -142,89 +142,91 @@
         </p>
       </VCol>
     </v-row>
-  </div>
-  <div style="overflow: hidden" class="bg-grey-lighten-3 py-5 py-md-10 pb-13">
-    <p class="text-center text-h6 font-weight-bold text-md-h4 my-7 mx-3">
-      Access tracking across
-      <span class="text-primary">1,045+ carriers</span> globally
-    </p>
-    <div class="d-flex transit" :style="`transform: translateX(${tranX}%);`">
-      <div v-for="logo in logos" :key="logo.img">
-        <v-img
-          :src="logo.img"
-          :width="$vuetify.display.mdAndDown ? '100' : '200'"
-          rounded="lg"
-          class="mx-3"
-        ></v-img>
+    <div style="overflow: hidden" class="bg-grey-lighten-3 py-5 py-md-10 pb-13">
+      <p class="text-center text-h6 font-weight-bold text-md-h4 my-7 mx-3">
+        Access tracking across
+        <span class="text-primary">1,045+ carriers</span> globally
+      </p>
+      <div class="d-flex transit" :style="`transform: translateX(${tranX}%);`">
+        <div v-for="logo in logos" :key="logo.img">
+          <v-img
+            :src="logo.img"
+            :width="$vuetify.display.mdAndDown ? '100' : '200'"
+            rounded="lg"
+            class="mx-3"
+          ></v-img>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- section4 -->
-  <v-row
-    class="mx-0 bg-accent"
-    align="center"
-    :style="`padding: ${$vuetify.display.mdAndDown ? '3em 1em' : '5.5em 2em'}`"
-    justify="center"
-  >
-    <VCol cols="12">
-      <p class="text-md-h2 text-h5 font-weight-bold text-md-left">
-        Our <span class="text-primary">Values</span>
-      </p>
-      <p
-        class="text-white my-2 my-md-5 text-md-left text-subtitle-1 font-weight-medium"
-      >
-        Our values represents a core set of values, rules and regulations that
-        guide our conduct and build trust-based relationships with partners and
-        customers, employees and guarantors. Our values guide our decisions,
-        behaviors, and reflect how we seek to serve our communities better.
-      </p>
-    </VCol>
-    <VCol cols="12" md="6">
-      <vContainer>
-        <div
-          class="d-flex align-center my-5"
-          style="gap: 12px"
-          v-for="value in values"
-          :key="value.img"
+    <!-- section4 -->
+    <v-row
+      class="mx-0 bg-accent"
+      align="center"
+      :style="`padding: ${
+        $vuetify.display.mdAndDown ? '3em 1em' : '5.5em 2em'
+      }`"
+      justify="center"
+    >
+      <VCol cols="12">
+        <p class="text-md-h2 text-h5 font-weight-bold text-md-left">
+          Our <span class="text-primary">Values</span>
+        </p>
+        <p
+          class="text-white my-2 my-md-5 text-md-left text-subtitle-1 font-weight-medium"
         >
-          <div class="bg-white rounded-pill pa-2">
-            <v-img :src="value.img" min-width="50" max-width="60"></v-img>
+          Our values represents a core set of values, rules and regulations that
+          guide our conduct and build trust-based relationships with partners
+          and customers, employees and guarantors. Our values guide our
+          decisions, behaviors, and reflect how we seek to serve our communities
+          better.
+        </p>
+      </VCol>
+      <VCol cols="12" md="6">
+        <vContainer>
+          <div
+            class="d-flex align-center my-5"
+            style="gap: 12px"
+            v-for="value in values"
+            :key="value.img"
+          >
+            <div class="bg-white rounded-pill pa-2">
+              <v-img :src="value.img" min-width="50" max-width="60"></v-img>
+            </div>
+            <div>
+              <p
+                class="text-white font-weight-bold text-h6 text-left text-uppercase"
+              >
+                {{ value.title }}
+              </p>
+              <p
+                class="text-subtitle-2 font-weight-medium text-left text-grey-lighten-2"
+              >
+                {{ value.text }}
+              </p>
+            </div>
           </div>
-          <div>
-            <p
-              class="text-white font-weight-bold text-h6 text-left text-uppercase"
-            >
-              {{ value.title }}
-            </p>
-            <p
-              class="text-subtitle-2 font-weight-medium text-left text-grey-lighten-2"
-            >
-              {{ value.text }}
-            </p>
-          </div>
-        </div>
-      </vContainer>
-    </VCol>
-    <VCol cols="12" md="6">
-      <vContainer>
-        <v-card variant="outlined" rounded="lg">
-          <v-img src="https://swiftdispatch.online/bg/14.jpg"></v-img>
-        </v-card>
-      </vContainer>
-    </VCol>
-  </v-row>
+        </vContainer>
+      </VCol>
+      <VCol cols="12" md="6">
+        <vContainer>
+          <v-card variant="outlined" rounded="lg">
+            <v-img src="https://swiftdispatch.online/bg/14.jpg"></v-img>
+          </v-card>
+        </vContainer>
+      </VCol>
+    </v-row>
+  </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
-import { computed } from "vue";
+import { computed, ref, onBeforeMount } from "vue";
 
-onMounted(() => {
+onBeforeMount(() => {
   window.scrollTo({
-    top: 100,
-    left: 100,
-    behavior: "auto",
+    top: 0,
+    left: 0,
+    behavior: "instant",
   });
 });
 
