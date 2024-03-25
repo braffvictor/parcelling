@@ -276,7 +276,6 @@
               class=""
               @click="num = 1"
               :variant="num == 1 ? 'text' : 'plain'"
-              variant="text"
               size="40"
             ></VBtn>
             <VBtn
@@ -285,7 +284,6 @@
               @click="num = 2"
               :variant="num == 2 ? 'text' : 'plain'"
               class=""
-              variant="text"
               size="40"
             ></VBtn>
           </div>
