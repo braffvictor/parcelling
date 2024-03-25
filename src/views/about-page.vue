@@ -288,6 +288,46 @@
             ></VBtn>
           </div>
         </VCol>
+        <VCol cols="12" class="my-5 my-md-10">
+          <VDivider thickness="2" class="mx-md-16" />
+        </VCol>
+        <VCol cols="12">
+          <p class="text-grey text-caption text-uppercase">
+            COVETED INVESTORS THAT TRUST US
+          </p>
+        </VCol>
+        <VCol cols="12" md="3" v-for="invest in investors" :key="invest.logo">
+          <div>
+            <v-img
+              :src="invest.logo"
+              style="filter: grayscale(1)"
+              class="mx-auto text-center"
+              width="150"
+            ></v-img>
+          </div>
+        </VCol>
+      </v-row>
+    </main>
+
+    <main class="bgTruck pa-7 pa-md-15">
+      <v-row class="mx-0 px-0" align="center">
+        <VCol cols="12" md="8">
+          <p
+            class="text-h4 text-md-h3 text-primary text-md-left font-weight-bold"
+          >
+            The right product matters
+          </p>
+          <p
+            class="text-h6 text-md-h5 text-white font-weight-bold text-md-left"
+          >
+            Start building exceptional delivery experiences with us.
+          </p>
+        </VCol>
+        <VCol cols="12" md="4">
+          <VBtn color="primary" class="text-white" variant="flat"
+            >Contact Us</VBtn
+          >
+        </VCol>
       </v-row>
     </main>
   </div>
@@ -304,6 +344,23 @@ onBeforeMount(() => {
 });
 
 const num = ref(0);
+
+const investors = computed(() => {
+  return [
+    {
+      logo: "https://images.ctfassets.net/s384oqk42kco/22LthAoy6zfr3gpMLa3tSM/3845f0e1db5478e7086ec399a362ab83/Parcel_Perform_Investor_Cambridge_Capital.webp",
+    },
+    {
+      logo: "https://images.ctfassets.net/s384oqk42kco/4bSeR0v813hLPDejF9Z9kH/5ad615e1bd017c8479cc049a8affcd9a/Parcel_Perform_Investor_SBVA.webp",
+    },
+    {
+      logo: "https://images.ctfassets.net/s384oqk42kco/1Q7oszqmyiiTtZzkAL5vyM/f64608321023ee450b91877116d1093e/Parcel_Perform_Investor_Wavemaker.webp",
+    },
+    {
+      logo: "https://images.ctfassets.net/s384oqk42kco/4nGoCRdXOst95UFnBDxzDa/8e1c485ab0924f0d80f326bea3f6e7d6/Parcel_Perform_Investor_Investible.webp",
+    },
+  ];
+});
 
 const specks = computed(() => {
   return [
@@ -360,19 +417,19 @@ const reviews = computed(() => {
     {
       logo: "https://images.ctfassets.net/s384oqk42kco/3pygPzzoqW8YVtpCivxcHk/58b77be53c8260ddc7f45727dccd8240/expondo.svg",
       image:
-        "https://www.parcelperform.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fs384oqk42kco%2F4aMPfxC9Q3jDbyGyk6UmAA%2F4a22ad4902b48770cb412e4efe44f5ec%2Fpp-customer-nespresso-3.png%3Fw%3D700%26fm%3Dpng&w=1920&q=75",
+        "https://www.parcelperform.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fs384oqk42kco%2F5lVasDFFPSBakliefyKF79%2Fa88fa6166d994233eda9b7e9368bd1e5%2Fpp-customer-expondo-1.jpg%3Fw%3D700%26fm%3Dpng&w=1920&q=75",
       pic: "https://www.parcelperform.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fs384oqk42kco%2F7vO0hnMRlGOVb7KFrBLZBF%2F76f4d86b1fdfd2d8c3f174135b5e0a5f%2FNespresso_Davide.webp%3Fw%3D78%26fm%3Dpng&w=1920&q=75",
       name: "Patrick Stan",
-      title: "Global Delivery Services Manager at Nepresso",
+      title: "Global Delivery Services Manager at Expondo",
       text: "Our Customer Service and Ops team has full visibility into the parcel journey. We can easily filter shipments based on different parameters. The various platform functionalities have helped us respond efficiently to customer queries",
     },
     {
       logo: "https://images.ctfassets.net/s384oqk42kco/4Yan3kawjcYmKY81e0iyTB/1f117ab4565b3c8728c2a48c43887b16/website_logo.png",
       image:
-        "https://www.parcelperform.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fs384oqk42kco%2F1dKWp0smwzFwHwLX47n80R%2Fcdc078150cc4feb3a3f1828a7dc25672%2Fmister_spex_image__1_.webp%3Fw%3D700%26fm%3Dpng&w=1920&q=75",
+        "https://www.parcelperform.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fs384oqk42kco%2F5gt6qQqHqGS0K7xk4CAuLl%2F88458b3d78ace100b17c614c16d88932%2Fpp-customer-bikesonline-3.jpg%3Fw%3D700%26fm%3Dpng&w=1920&q=75",
       pic: "https://www.parcelperform.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fs384oqk42kco%2F4DjvEtBzoRw6BXifYDXYUG%2F7c23d06fe18400ced5ac56f92388cf5d%2Fimage_2.png%3Fw%3D78%26fm%3Dpng&w=1920&q=75",
       name: "William Carlson",
-      title: "Head of Supply Chain at Spex",
+      title: "Director of Operation, Bikes Online, US",
       text: "Tracking assistance is one of the top reasons for customer queries. In some markets, we have seen a 45% decrease of such calls. Customers also revsit the track & trace webpge 4-6 times during the delivery journey, proving it is an essential feaure to boost customer experience",
     },
     {
@@ -380,7 +437,7 @@ const reviews = computed(() => {
       image:
         "https://www.parcelperform.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fs384oqk42kco%2F5GKZ2kjIifQf9j4ndA0iF3%2F9658f6d28aaae9b2e9f9c80b8abd93f3%2Fbyrd_testimonial_imagex.webp%3Fw%3D700%26fm%3Dpng&w=1920&q=75",
       pic: "https://www.parcelperform.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fs384oqk42kco%2F2rcXrPJHMjb3yKwuePXJDD%2Fbe4ec2207144eb10d9464dda157cfe8d%2Fpetra_image_byrd.webp%3Fw%3D78%26fm%3Dpng&w=1920&q=75",
-      name: "Lilian Dobrocka",
+      name: "Petra Dobrocka",
       title: "CCO of byrd",
       text: `As Europe's leading e-commerce fulfillment platform, we work with multiple regional carrires. We wanted a partner that could handle the highest degree of data complexity to help our customers improve operational efficiency and elevate the delivery experience`,
     },
@@ -390,5 +447,10 @@ const reviews = computed(() => {
 <style>
 .transit {
   transition: all 1s linear;
+}
+.bgTruck {
+  background: url(https://images.ctfassets.net/s384oqk42kco/3UWqbw0n4sJoo95IoIaOjA/31fd2e9379a7f843da3ed2e7c8147a37/New_book_a_demo_banner_proposal.webp?w=1440&fm=png);
+  background-size: cover;
+  background-position: center;
 }
 </style>

@@ -55,7 +55,7 @@
           At Parcel Perform, we believe in the transformative power of data.
         </p>
         <p
-          class="text-accent my-3 text-center text-h6 text-md-h6 font-weight-thin"
+          class="text-accent my-3 text-center text-h6 text-md-h6 font-weight-regular"
         >
           Our comprehensive data pipeline aggregates all logistics event data
           across 1,045+ carriers into one cohesive, global standard. We
@@ -216,10 +216,14 @@
         </vContainer>
       </VCol>
     </v-row>
+
+    <!-- the footer form -->
+    <ExpertComp />
   </div>
 </template>
 
 <script setup>
+import ExpertComp from "@/components/ExpertComp.vue";
 import { computed, ref, onBeforeMount } from "vue";
 
 onBeforeMount(() => {
