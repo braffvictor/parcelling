@@ -196,7 +196,7 @@
           ></VBtn>
         </VCol>
         <VCol cols="12" md="8">
-          <VCard elevation="15" rounded="lg" class="py-4 py-md-0">
+          <VCard elevation="15" rounded="lg" class="py-4 py-md-0 transit">
             <v-row class="mx-0 px-0" justify="center" align="center">
               <VCol cols="6" class="mx-0 px-0 d-none d-md-block">
                 <v-img
@@ -389,6 +389,6 @@ const reviews = computed(() => {
 </script>
 <style>
 .transit {
-  transition: all 2s linear;
+  transition: all 1s linear;
 }
 </style>

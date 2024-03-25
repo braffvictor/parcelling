@@ -57,6 +57,7 @@
       v-model="drawer"
       color="white"
       tile
+      touchless
       class="pa-0 py-5"
       location="right"
       floating
