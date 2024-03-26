@@ -91,7 +91,10 @@
       </v-row>
     </main>
 
-    <BgFooter bg-image="https://swiftdispatch.online/bg/home1.png">
+    <BgFooter
+      bg-image="https://swiftdispatch.online/bg/home1.png"
+      style="border-bottom: 1px solid white"
+    >
       <template #title> We Make Transportation Easier, Join Us Today </template>
     </BgFooter>
 
