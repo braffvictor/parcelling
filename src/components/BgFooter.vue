@@ -20,7 +20,7 @@
         </p>
       </VCol>
       <VCol cols="12" md="4">
-        <VBtn color="primary" class="text-white" variant="flat"
+        <VBtn color="primary" size="large" class="text-white" variant="flat"
           >Contact Us</VBtn
         >
       </VCol>
@@ -29,7 +29,7 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
+import { defineProps } from "vue";
 
 defineProps({
   bgImage: {
