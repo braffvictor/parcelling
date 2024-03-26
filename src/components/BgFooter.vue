@@ -29,6 +29,8 @@
 </template>
 
 <script setup>
+import { defineProps } from 'vue'
+
 defineProps({
   bgImage: {
     type: String,
