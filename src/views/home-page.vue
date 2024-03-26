@@ -55,7 +55,7 @@
           At Parcel Perform, we believe in the transformative power of data.
         </p>
         <p
-          class="text-accent my-3 text-center text-h6 text-md-h6 font-weight-regular"
+          class="text-grey my-3 text-center text-h6 text-md-h6 font-weight-regular"
         >
           Our comprehensive data pipeline aggregates all logistics event data
           across 1,045+ carriers into one cohesive, global standard. We
@@ -143,7 +143,9 @@
       </VCol>
     </v-row>
     <div style="overflow: hidden" class="bg-grey-lighten-3 py-5 py-md-10 pb-13">
-      <p class="text-center text-h6 font-weight-bold text-md-h4 my-7 mx-3">
+      <p
+        class="text-center text-h5 font-weight-bold text-md-h4 text-accent my-7 mx-3"
+      >
         Access tracking across
         <span class="text-primary">1,045+ carriers</span> globally
       </p>

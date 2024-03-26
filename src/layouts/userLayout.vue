@@ -254,10 +254,10 @@ const links = computed(() => {
       img: "https://images.ctfassets.net/s384oqk42kco/KsyD6QAVBKfzJL4EaiwDk/a51d4ac6ac583cdff709978ef8ab234a/Rate.svg",
     },
     {
-      name: "Customer Service",
-      to: "/customer-service",
+      name: "Services",
+      to: "/services",
       icon: "fa-phone",
-      img: "https://images.ctfassets.net/s384oqk42kco/5r44zBhhPTz8hLOYIdC12i/71c41b200155f6fd8f8b3341a31cebe7/Customer_service_navigation_icon.svg",
+      img: "https://images.ctfassets.net/s384oqk42kco/2bCIT8RkVDIbnEaTTzkFIw/436207424a668a5f2671a36e2d7a3dce/Check_out.png",
     },
     {
       name: "About Us",
