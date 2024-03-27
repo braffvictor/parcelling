@@ -5,7 +5,7 @@
       class="mx-0 bg-accent"
       align="center"
       :style="`padding: ${
-        $vuetify.display.mdAndDown ? '5.7em 1em' : '5.5em 2em'
+        $vuetify.display.mdAndDown ? '4.6em 1em' : '5.5em 2em'
       }`"
       justify="center"
     >
@@ -147,6 +147,8 @@
         </p>
       </VCol>
     </v-row>
+
+    <!-- moving images sections -->
     <div style="overflow: hidden" class="bg-grey-lighten-3 py-5 py-md-10 pb-13">
       <p
         class="text-center text-h5 font-weight-bold text-md-h4 text-accent my-7 mx-3"
