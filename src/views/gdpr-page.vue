@@ -110,7 +110,6 @@
             variant="flat"
             elevation="0"
             class="pa-3 pa-md-5 bg-transparent"
-            min-height="300"
             rounded="lg"
           >
             <v-img
