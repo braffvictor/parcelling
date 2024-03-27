@@ -236,28 +236,29 @@ const links = computed(() => {
       img: "https://images.ctfassets.net/s384oqk42kco/2B9LKeSGBq3X38oUJ4xOuq/24d171417d3c947469e47d8206cf8ec1/Logomark_dark.svg",
     },
     {
-      name: "Product",
-      to: "/product",
-      icon: "fa-code-fork",
-      img: "https://images.ctfassets.net/s384oqk42kco/4720QDerdyC2BU6Wir4oxE/5e613181f0f4004be0c77768df0ae646/Group-1.svg",
-    },
-    {
       name: "Carrier",
       to: "/carrier",
       icon: "fa-truck",
       img: "https://images.ctfassets.net/s384oqk42kco/RCUPqmIJf8Ky16CIWKSPL/a48c4d5d1526deb217fad0e7eaabcd33/Carrier_Integrations.svg",
     },
     {
-      name: "Rate",
-      to: "/rate",
-      icon: "fa-star",
-      img: "https://images.ctfassets.net/s384oqk42kco/KsyD6QAVBKfzJL4EaiwDk/a51d4ac6ac583cdff709978ef8ab234a/Rate.svg",
+      name: "GDPR",
+      to: "/gdpr",
+      icon: "fa-code-fork",
+      img: "https://images.ctfassets.net/s384oqk42kco/6IqVhOrXjQjSfbFOBNcEh/f4d51f05406f1973c9ebe090611c49d1/GPDR.svg",
     },
+
     {
       name: "Services",
       to: "/services",
       icon: "fa-phone",
       img: "https://images.ctfassets.net/s384oqk42kco/2bCIT8RkVDIbnEaTTzkFIw/436207424a668a5f2671a36e2d7a3dce/Check_out.png",
+    },
+    {
+      name: "Contact",
+      to: "/contact",
+      icon: "fa-phone",
+      img: "https://images.ctfassets.net/s384oqk42kco/5r44zBhhPTz8hLOYIdC12i/71c41b200155f6fd8f8b3341a31cebe7/Customer_service_navigation_icon.svg",
     },
     {
       name: "About Us",

@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import homepage from "../views/home-page.vue";
 import aboutpage from "../views/about-page.vue";
 import servicespage from "../views/services-page.vue";
+import contactpage from "../views/contact-page.vue";
+import gdprpage from "../views/gdpr-page.vue";
 
 const routes = [
   {
@@ -24,6 +26,22 @@ const routes = [
     path: "/services",
     name: "Services",
     component: servicespage,
+    meta: {
+      layout: "user",
+    },
+  },
+  {
+    path: "/contact",
+    name: "Contact",
+    component: contactpage,
+    meta: {
+      layout: "user",
+    },
+  },
+  {
+    path: "/gdpr",
+    name: "GDPR",
+    component: gdprpage,
     meta: {
       layout: "user",
     },

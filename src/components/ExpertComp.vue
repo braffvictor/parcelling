@@ -95,6 +95,9 @@
                   false-icon="fa-square"
                 ></VCheckbox>
               </VCol>
+              <VCol cols="12">
+                <VBtn color="primary" variant="tonal" block>Submit</VBtn>
+              </VCol>
             </v-row>
           </v-form>
         </div>

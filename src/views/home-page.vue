@@ -22,6 +22,11 @@
           Parcel Perform is a team of logistics and data experts setting the bar
           for the delivery experience from pre-checkout to returns.
         </p>
+        <div class="text-center mx-auto text-md-left mx-md-0">
+          <VBtn color="primary" rounded="lg" size="large" variant="flat"
+            >Track Parcel</VBtn
+          >
+        </div>
       </VCol>
       <VCol cols="12" md="6">
         <VCard variant="flat" color="transparent" class="rounded-pill">
@@ -55,7 +60,7 @@
           At Parcel Perform, we believe in the transformative power of data.
         </p>
         <p
-          class="text-grey my-3 text-center text-h6 text-md-h6 font-weight-regular"
+          class="text-grey my-3 text-center text-subtitle-1 text-md-h6 font-weight-regular"
         >
           Our comprehensive data pipeline aggregates all logistics event data
           across 1,045+ carriers into one cohesive, global standard. We

@@ -1,7 +1,7 @@
 <template>
   <div>
     <main class="bg-white">
-      <v-row class="mx-0 px-0 pa-5 pa-md-12" align="center">
+      <v-row class="mx-0 px-0 pa-7 pa-md-14" align="center">
         <VCol cols="12">
           <p class="font-weight-bold text-h4 text-md-h3 text-accent">
             Our Services
@@ -55,7 +55,7 @@
       </v-row>
     </main>
 
-    <main class="bg-grey-lighten-3 pa-5 pa-md-12">
+    <main class="bg-grey-lighten-3 pa-7 pa-md-14">
       <v-row class="mx-0 px-0">
         <VCol cols="12">
           <p
@@ -84,7 +84,7 @@
           >
             {{ title }}
           </p>
-          <p class="text-grey font-weight-thin text-md-left">
+          <p class="text-grey-darken-1 font-weight-regular text-md-left">
             {{ text }}
           </p>
         </VCol>
@@ -98,7 +98,7 @@
       <template #title> We Make Transportation Easier, Join Us Today </template>
     </BgFooter>
 
-    <main class="bg-accent pa-5 pa-md-12">
+    <main class="bg-accent pa-7 pa-md-14">
       <v-row class="mx-0 px-0" align="center">
         <VCol cols="12" md="6">
           <p
