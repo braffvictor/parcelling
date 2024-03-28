@@ -97,7 +97,15 @@
     </div>
 </template>
 <script setup>
-import { ref } from 'vue';
+import { ref, onBeforeMount } from 'vue';
+
+onBeforeMount(() => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "instant",
+  });
+});
 
 
 const parcelCode = ref('')

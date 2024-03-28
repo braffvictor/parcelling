@@ -116,15 +116,18 @@ const carriers = computed(() => {
   return [
     {
       title : 'Connect to a global carrier network.',
-        text : 'Access granular reports on carrier performance that enable benchmarking of carriers, markets, and shipping services against all logistics KPIs.'
+        text : 'Access granular reports on carrier performance that enable benchmarking of carriers, markets, and shipping services against all logistics KPIs.',
+        img : ''
     },
     {
       title : '',
+      text : '',
       img : 'https://images.ctfassets.net/s384oqk42kco/1eT2E7Dx7UywG8IV1jkBV3/dad685bf0a13215d9b385769cc112c54/GIFs1_-_Carrier_page-V4.gif'
     },
     {
       title : 'End-to-end supply chain visibility',
-      text : 'Gain 100% delivery visibility via 155+ events and triggers that cover all delivery scenarios in your supply chain.'
+      text : 'Gain 100% delivery visibility via 155+ events and triggers that cover all delivery scenarios in your supply chain.',
+      img : ''
     },
   
   ]
