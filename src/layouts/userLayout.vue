@@ -231,7 +231,7 @@ const links = computed(() => {
   return [
     {
       name: "Track",
-      to: "/track",
+      to: "/tracking",
       icon: "fa-thumb-tack",
       img: "https://images.ctfassets.net/s384oqk42kco/2B9LKeSGBq3X38oUJ4xOuq/24d171417d3c947469e47d8206cf8ec1/Logomark_dark.svg",
     },

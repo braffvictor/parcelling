@@ -5,6 +5,7 @@ import servicespage from "../views/services-page.vue";
 import contactpage from "../views/contact-page.vue";
 import gdprpage from "../views/gdpr-page.vue";
 import carrierpage from "../views/carrier-page.vue";
+import trackingpage from "../views/tracking-page.vue";
 
 const routes = [
   {
@@ -51,6 +52,14 @@ const routes = [
     path: "/carrier",
     name: "Carrier",
     component: carrierpage,
+    meta: {
+      layout: "user",
+    },
+  },
+  {
+    path: "/tracking",
+    name: "Tracking",
+    component: trackingpage,
     meta: {
       layout: "user",
     },
