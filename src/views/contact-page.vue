@@ -187,8 +187,8 @@
         <VCol
           cols="12"
           md="4"
-          class="my-2"
-          v-for="review in reviews"
+          class=""
+          v-for="(review, i) in reviews"
           :key="review.text"
         >
           <v-card variant="flat" class="bg-transparent">
@@ -196,7 +196,7 @@
               <v-img
                 :src="review.logo"
                 width="150"
-                class="text-center mx-auto my-5"
+                class="text-center mx-auto my-2"
               ></v-img>
             </div>
             <p class="text-accent font-weight-regular">
@@ -215,6 +215,7 @@
               {{ review.title }}
             </p>
           </v-card>
+          <VDivider thickness="2" class="mt-7 d-md-none" v-if="i+1 != reviews.length"/>
         </VCol>
       </v-row>
     </main>

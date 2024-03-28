@@ -4,6 +4,7 @@ import aboutpage from "../views/about-page.vue";
 import servicespage from "../views/services-page.vue";
 import contactpage from "../views/contact-page.vue";
 import gdprpage from "../views/gdpr-page.vue";
+import carrierpage from "../views/carrier-page.vue";
 
 const routes = [
   {
@@ -42,6 +43,14 @@ const routes = [
     path: "/gdpr",
     name: "GDPR",
     component: gdprpage,
+    meta: {
+      layout: "user",
+    },
+  },
+  {
+    path: "/carrier",
+    name: "Carrier",
+    component: carrierpage,
     meta: {
       layout: "user",
     },

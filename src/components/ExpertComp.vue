@@ -96,7 +96,7 @@
                 ></VCheckbox>
               </VCol>
               <VCol cols="12">
-                <VBtn color="primary" variant="tonal" block>Submit</VBtn>
+                <VBtn color="primary" variant="flat" block>Submit</VBtn>
               </VCol>
             </v-row>
           </v-form>

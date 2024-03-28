@@ -137,7 +137,15 @@
 </template>
 <script setup>
 import ExpertComp from "@/components/ExpertComp.vue";
-import { computed } from "vue";
+import { computed, onBeforeMount } from "vue";
+
+onBeforeMount(() => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "instant",
+  });
+});
 
 const methods = computed(() => {
   return [
