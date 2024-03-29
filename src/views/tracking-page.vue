@@ -3,7 +3,7 @@
         
     <main class="bg-accent">
         <div class="pa-5 pa-md-8">
-          <p class="text-white text-subtitle-1 text-md-h6 font-weight-medium text-center">
+          <p class="text-white text-capitalize text-subtitle-1 text-md-h6 font-weight-medium text-center">
            <VIcon color="primary" icon="fa-thumb-tack" size="small"></VIcon> Redefined tracking, smarter control: Unified visibility for all shipments from a single platform.
           </p>
         </div>
@@ -12,7 +12,7 @@
         <main class="bg-white pa-2 py-8 pa-md-12">
             <v-row class="mx-0 px-0" justify="center">
                 <VCol cols="12" md="8">
-                    <VCard variant="elevated" rounded="lg" elevation="4" class="" style="border-top: 4px solid #ea580c;">
+                    <VCard rounded="xl" class="" style="border-top: 4px solid #ea580c;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
                         <VCol cols="12">
                             <VCardText>
                                 <p class="text-accent text-h6 text-md-h5 text-left font-weight-bold">

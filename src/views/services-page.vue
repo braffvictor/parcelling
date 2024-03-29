@@ -59,7 +59,7 @@
       <v-row class="mx-0 px-0">
         <VCol cols="12">
           <p
-            class="text-text-h5 font-weight-bold text-md-h4 text-accent text-capitalize"
+            class="text-h5 font-weight-bold text-md-h4 text-accent text-capitalize"
           >
             Our Expert Services
           </p>
