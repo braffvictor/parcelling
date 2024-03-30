@@ -16,39 +16,124 @@
                         <VCol cols="12">
                             <VCardText>
                                 <p class="text-accent text-h6 text-md-h5 text-left font-weight-bold">
-                                    Track Your Parcel Here
+                                    Monitor Your Parcel Here
                                 </p>
-                                <p class="bg-primary" style="border: 1px solid #ea580c; width : 50px; height: 4px"></p>
+                                <p class="bg-primary" style="border: 1px solid #ea580c; width : 70px; height: 4px"></p>
                             </VCardText>
                             <VCardText class="my-0 py-0">
                                 <VTextField
                                         v-model="parcelCode"
                                         label="Enter Your Tracking ID"
                                         class="text-accent"
+                                        type="tel"
                                         color="primary"
                                         variant="outlined"
                                         />
                             </VCardText>
                             <VCardText class="my-0 py-0">
-                                <VBtn color="primary" variant="flat" block size="large">Proceed</VBtn>
+                                <VBtn color="primary" @click="showParcel" variant="flat" block size="large">Proceed</VBtn>
                             </VCardText>
                         </VCol>
 
-                        <v-card-text class="">
-                            <v-img class="mx-auto text-center" src="https://www.parcelmonitor.com/images/tracking-default-image.svg" width="400" ></v-img>
+                        <VCol cols="12" v-if="show">
+                            <v-card-text class="">
+                                <v-img class="mx-auto text-center" src="https://www.parcelmonitor.com/images/tracking-default-image.svg" width="400" ></v-img>
+    
+                                <p class="text-grey-darken-1 text-center font-weight-light text-subtitle-1 text-md-h6 mt-3">
+                                    The fastest way to trace your international parcel
+                                </p>
+                                <p class="text-grey text-center my-3">
+                                    Simply enter your tracking number above and hit proceed. Parcel Monitor is the global knowledge-sharing platform dedicated to e-commerce logistics for retailers, logistics carriers, industry professionals, and end-consumers.
+                                </p>
+                            </v-card-text>
+                        </VCol>
 
-                            <p class="text-grey-darken-1 text-center font-weight-light text-subtitle-1 text-md-h6 mt-3">
-                                The fastest way to trace your international parcel
+                        <VCol cols="12" class="" v-if="!show">
+                            <p class="text-accent mx-3 font-weight-medium text-md-left text-h6 text-md-h5">
+                                Tracking ID : <span class="font-weight-bold text-primary">523453</span>
                             </p>
-                            <p class="text-grey text-center my-3">
-                                Simply enter your tracking number above and hit proceed. Parcel Monitor is the global knowledge-sharing platform dedicated to e-commerce logistics for retailers, logistics carriers, industry professionals, and end-consumers.
-                            </p>
-                        </v-card-text>
-                       
+                            <v-row class="mx-0 px-0 mb-2" justify="center" align="center">
+                                <VCol cols="12" md="6">
+                                    <v-card variant="outlined" color="grey" rounded="lg" class="bg-transparent mx-auto text-center">
+                                        <v-img  src="https://swiftdispatch.online/bg/home1.png" class="mx-auto text-center">
+                                        </v-img>
+                                    </v-card>
+                                </VCol>
+                                <!-- <VDivider color="primary" thickness="3" class="mx-3 d-block d-md-none rounded"/> -->
+                                <VCol cols="12" md="6">
+                                    <p class="text-left text-accent text-md-h6 font-weight-bold text-subtitle-1">
+                                        Customer Profile: 
+                                    </p>
+                                    <VDivider thickness="0" class="my-2"/>
+                                    <p class="text-left text-accent font-weight-light text-md-subtitle-1 text-subtitle-2">
+                                        Name: <span class="font-weight-bold text-primary">Dallas Elle White Wells</span>
+                                    </p>
+                                    <VDivider class="my-2"/>
+                                    <p class="text-left text-accent font-weight-light text-md-subtitle-1 text-subtitle-2">
+                                        Email: <span class="font-weight-bold text-primary">Tomlyons822@gmail.com
+                                        </span>
+                                    </p>
+                                    <VDivider class="my-2"/>
+                                    <p class="text-left text-accent font-weight-light text-md-subtitle-1 text-subtitle-2">
+                                        Phone Number: <span class="font-weight-bold text-primary">+1-(617)-294-9720</span>
+                                    </p>
+                                    <VDivider class="my-2"/>
+                                    <p class="text-left d-flex text-accent font-weight-light text-md-subtitle-1 text-subtitle-2" style="gap: 3px">
+                                        Residential Address: <span class="font-weight-bold text-primary"> 1211 Bay St Morehead City, North Carolina. 28557</span>
+                                    </p>
+                                </VCol>
+
+                                <VCol cols="12" >
+                                    <p class="text-left text-accent text-md-h6 font-weight-bold text-subtitle-1">
+                                        Parcel Data: 
+                                    </p>
+                                    <VDivider thickness="0" class="my-2"/>
+                                    <p class="text-left text-accent font-weight-light text-md-subtitle-1 text-subtitle-2">
+                                        Parcel: <span class="font-weight-bold text-primary">Kia Sorento 2022</span>
+                                    </p>
+                                    <VDivider class="my-2"/>
+                                    <p class="text-left d-flex text-accent font-weight-light text-md-subtitle-1 text-subtitle-2" style="gap: 3px">
+                                        Current Location: <span class="font-weight-bold text-primary">Incheon International Airport corporation: Incheon Jung-gu Airport Rd.
+                                        </span>
+                                    </p>
+                                    <VDivider class="my-2"/>
+                                    <p class="text-left text-accent font-weight-light text-md-subtitle-1 text-subtitle-2">
+                                        Shipping Cost: <span class="font-weight-bold text-primary">
+                                            $3,500.00</span>
+                                    </p>
+                                    <VDivider class="my-2"/>
+                                    <p class="text-left text-accent font-weight-light text-md-subtitle-1 text-subtitle-2">
+                                        VAT: <span class="font-weight-bold text-primary">$950.00</span>
+                                    </p>
+                                    <VDivider class="my-2"/>
+                                    <p class="text-left text-accent font-weight-light text-md-subtitle-1 text-subtitle-2">
+                                        Insurance: <span class="font-weight-bold text-primary">
+                                            $1,200.00</span>
+                                    </p>
+                                    <VDivider class="my-2"/>
+                                    <p class="text-left text-accent font-weight-light text-md-subtitle-1 text-subtitle-2">
+                                        Service Charge: <span class="font-weight-bold text-primary">$350.00</span>
+                                    </p>
+                                </VCol>
+                                <VCol cols="12">
+                                    <p class="text-left text-center text-uppercase text-accent text-md-subtitle-1 font-weight-light text-subtitle-2">
+                                        Parcel Status: Ongoing <v-progress-circular :indeterminate="loading" size="small" color="primary" model-value="20"></v-progress-circular>
+                                    </p>
+                                    <!-- <p class="text-left text-accent font-weight-light text-md-subtitle-1 text-subtitle-2">
+                                        Phase: <span class="font-weight-bold text-uppercase text-primary">Ongoing
+                                            <v-progress-circular model-value="20"></v-progress-circular></span>
+                                    </p> -->
+                                </VCol>
+                            </v-row>
+                        </VCol>
+                        
                     </VCard>
                 </VCol>
             </v-row>
         </main>
+
+
+
 
         <main class="bg-grey-lighten-5 pa-4 pa-md-8">
             <VCardText class="my-0 py-0">
@@ -107,7 +192,24 @@ onBeforeMount(() => {
   });
 });
 
-
 const parcelCode = ref('')
+const show = ref(true)
+
+
+const loading = ref(true)
+setTimeout(() => {
+    loading.value = false
+}, 5000)
+
+const showParcel = () => {
+    if(parcelCode.value == '123456'){
+        show.value = false
+    }else{
+        show.value = true
+    }
+}
+
+
+
 </script>
 <style></style>
