@@ -12,7 +12,9 @@
         <main class="bg-white pa-2 py-8 pa-md-12">
             <v-row class="mx-0 px-0" justify="center">
                 <VCol cols="12" md="8">
-                    <VCard rounded="xl" class="" style="border-top: 4px solid #ea580c;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
+                    <VCard  rounded="xl" class="transit" style="border-top: 4px solid #ea580c;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
+                        <!-- <VBtn color="primary" icon class="rounded-circle mt-15" loading location="top center" position="absolute">text</VBtn> -->
+                      
                         <VCol cols="12">
                             <VCardText>
                                 <p class="text-accent text-h6 text-md-h5 text-left font-weight-bold">
@@ -48,13 +50,13 @@
                             </v-card-text>
                         </VCol>
 
-                        <VCol cols="12" class="" v-if="!show">
-                            <p class="text-accent mx-3 font-weight-medium text-md-left text-h6 text-md-h5">
+                        <VCol cols="12" class="transit" v-if="!show">
+                            <p class="text-accent mx-3 font-weight-medium text-md-left text-h6 text-md-h5 transit">
                                 Tracking ID : <span class="font-weight-bold text-primary">523453</span>
                             </p>
                             <v-row class="mx-0 px-0 mb-2" justify="center" align="center">
                                 <VCol cols="12" md="6">
-                                    <v-card variant="outlined" color="grey" rounded="lg" class="bg-transparent mx-auto text-center">
+                                    <v-card variant="outlined" color="grey" rounded="lg" class="bg-transparent transit mx-auto text-center">
                                         <v-img  src="https://swiftdispatch.online/bg/home1.png" class="mx-auto text-center">
                                         </v-img>
                                     </v-card>
@@ -65,20 +67,20 @@
                                         Customer Profile: 
                                     </p>
                                     <VDivider thickness="0" class="my-2"/>
-                                    <p class="text-left text-accent font-weight-light text-md-subtitle-1 text-subtitle-2">
+                                    <p class="text-left text-accent transit font-weight-light text-md-subtitle-1 text-subtitle-2">
                                         Name: <span class="font-weight-bold text-primary">Dallas Elle White Wells</span>
                                     </p>
                                     <VDivider class="my-2"/>
-                                    <p class="text-left text-accent font-weight-light text-md-subtitle-1 text-subtitle-2">
+                                    <p class="text-left text-accent transit font-weight-light text-md-subtitle-1 text-subtitle-2">
                                         Email: <span class="font-weight-bold text-primary">Tomlyons822@gmail.com
                                         </span>
                                     </p>
                                     <VDivider class="my-2"/>
-                                    <p class="text-left text-accent font-weight-light text-md-subtitle-1 text-subtitle-2">
+                                    <p class="text-left text-accent transit font-weight-light text-md-subtitle-1 text-subtitle-2">
                                         Phone Number: <span class="font-weight-bold text-primary">+1-(617)-294-9720</span>
                                     </p>
                                     <VDivider class="my-2"/>
-                                    <p class="text-left d-flex text-accent font-weight-light text-md-subtitle-1 text-subtitle-2" style="gap: 3px">
+                                    <p class="text-left d-flex text-accent transit font-weight-light text-md-subtitle-1 text-subtitle-2" style="gap: 3px">
                                         Residential Address: <span class="font-weight-bold text-primary"> 1211 Bay St Morehead City, North Carolina. 28557</span>
                                     </p>
                                 </VCol>
@@ -103,6 +105,16 @@
                                     </p>
                                     <VDivider class="my-2"/>
                                     <p class="text-left text-accent font-weight-light text-md-subtitle-1 text-subtitle-2">
+                                        Unit : <span class="font-weight-bold text-primary">
+                                            2</span>
+                                    </p>
+                                    <VDivider class="my-2"/>
+                                    <p class="text-left text-accent font-weight-light text-md-subtitle-1 text-subtitle-2">
+                                        Price : <span class="font-weight-bold text-primary">
+                                            $7,880</span>
+                                    </p>
+                                    <VDivider class="my-2"/>
+                                    <p class="text-left text-accent font-weight-light text-md-subtitle-1 text-subtitle-2">
                                         VAT: <span class="font-weight-bold text-primary">$950.00</span>
                                     </p>
                                     <VDivider class="my-2"/>
@@ -114,11 +126,27 @@
                                     <p class="text-left text-accent font-weight-light text-md-subtitle-1 text-subtitle-2">
                                         Service Charge: <span class="font-weight-bold text-primary">$350.00</span>
                                     </p>
+                                    <VDivider class="my-2"/>
+                                    <p class="text-left text-accent font-weight-light text-md-subtitle-1 text-subtitle-2">
+                                        Due Date: <span class="font-weight-bold text-primary">
+                                            06/12/2025</span>
+                                    </p>
+                                
                                 </VCol>
                                 <VCol cols="12">
                                     <p class="text-left text-center text-uppercase text-accent text-md-subtitle-1 font-weight-light text-subtitle-2">
-                                        Parcel Status: Ongoing <v-progress-circular :indeterminate="loading" size="small" color="primary" model-value="20"></v-progress-circular>
+                                        Parcel Status: Ongoing
+                                         <!-- <v-progress-circular :indeterminate="loading" size="small" color="primary" model-value="50"></v-progress-circular> -->
                                     </p>
+                                    <v-progress-linear
+                                    buffer-value="0"
+                                    color="primary"
+                                    :indeterminate="loading"
+                                    model-value="50"
+                                    rounded="lg"
+                                    striped
+                                    height="5"
+                                  ></v-progress-linear>
                                     <!-- <p class="text-left text-accent font-weight-light text-md-subtitle-1 text-subtitle-2">
                                         Phase: <span class="font-weight-bold text-uppercase text-primary">Ongoing
                                             <v-progress-circular model-value="20"></v-progress-circular></span>
@@ -131,8 +159,6 @@
                 </VCol>
             </v-row>
         </main>
-
-
 
 
         <main class="bg-grey-lighten-5 pa-4 pa-md-8">
@@ -193,7 +219,7 @@ onBeforeMount(() => {
 });
 
 const parcelCode = ref('')
-const show = ref(true)
+const show = ref(false)
 
 
 const loading = ref(true)
@@ -212,4 +238,8 @@ const showParcel = () => {
 
 
 </script>
-<style></style>
+<style>
+.transit {
+    transition: all 1s linear;
+  }
+</style>

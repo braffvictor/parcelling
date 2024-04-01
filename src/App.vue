@@ -12,6 +12,10 @@
       </nav> -->
         <router-view />
       </admin-layout>
+
+      <AuthLayout v-if="route.meta.layout == 'auth'">
+        <router-view/>
+      </AuthLayout>
     </div>
   </VApp>
 </template>
@@ -20,6 +24,7 @@
 import { useRoute } from "vue-router";
 import userLayout from "./layouts/userLayout.vue";
 import adminLayout from "./layouts/adminLayout.vue";
+import AuthLayout from "./layouts/authLayout.vue";
 
 const route = useRoute();
 </script>
