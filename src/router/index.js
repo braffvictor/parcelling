@@ -69,7 +69,8 @@ const routes = [
   {
     path: "/registration",
     name: "Registration",
-    component: registrationpage,
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/registration-page.vue"),
     meta: {
       layout: "auth",
     },
@@ -77,7 +78,8 @@ const routes = [
   {
     path: "/login",
     name: "Login",
-    component: loginpage,
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/login-page.vue"),
     meta: {
       layout: "auth",
     },
