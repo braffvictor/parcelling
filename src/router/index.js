@@ -6,8 +6,8 @@ import contactpage from "../views/contact-page.vue";
 import gdprpage from "../views/gdpr-page.vue";
 import carrierpage from "../views/carrier-page.vue";
 import trackingpage from "../views/tracking-page.vue";
-import registrationpage from "../views/registration-page.vue";
-import loginpage from "../views/login-page.vue";
+// import registrationpage from "../views/registration-page.vue";
+// import loginpage from "../views/login-page.vue";
 
 const routes = [
   {
