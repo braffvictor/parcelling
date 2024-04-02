@@ -75,14 +75,6 @@ const routes = [
     },
   },
   {
-    path: "/registration",
-    name: "Registration",
-    component: registrationpage,
-    meta: {
-      layout: "auth",
-    },
-  },
-  {
     path: "/login",
     name: "Login",
     component: loginpage,
