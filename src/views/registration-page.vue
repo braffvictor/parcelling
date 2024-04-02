@@ -83,6 +83,7 @@
 <script setup>
 import { ref } from 'vue';
 
+const eye = ref(false)
 
 const firstName = ref('')
 const lastName = ref('')
