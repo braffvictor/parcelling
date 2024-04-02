@@ -23,7 +23,12 @@
           for the delivery experience from pre-checkout to returns.
         </p>
         <div class="text-center mx-auto text-md-left mx-md-0">
-          <VBtn color="primary" to="/tracking" rounded="lg" size="large" variant="flat"
+          <VBtn
+            color="primary"
+            to="/tracking"
+            rounded="lg"
+            size="large"
+            variant="flat"
             >Track Parcel</VBtn
           >
         </div>
