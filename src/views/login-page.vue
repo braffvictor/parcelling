@@ -34,7 +34,7 @@
                       label="Email Address"
                       variant="outlined"
                       color="primary"
-                      :rules="[(v) => !!v || 'Email Address is required']"
+                      :rules="emailRules"
                       class="text-white"
                       density="comfortable"
                     />
@@ -43,6 +43,7 @@
                     <VTextField
                       v-model="password"
                       label="Password"
+                      :rules="passwordRules"
                       :append-inner-icon="eye ? 'fa-eye' : 'fa-eye-slash'"
                       @click:append-inner="eye = !eye"
                       variant="outlined"
@@ -83,6 +84,15 @@ const submit = () => {
 };
 
 const email = ref("");
+const emailRules = [
+  (v) => !!v || "E-mail is required",
+  (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
+];
+
 const password = ref("");
+const passwordRules = [
+  (v) => !!v || "Password is required",
+  (v) => (v && v.length >= 6) || "Password must be greater than 6 characters",
+];
 </script>
 <style></style>

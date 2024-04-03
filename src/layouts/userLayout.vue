@@ -88,7 +88,8 @@
 
     <v-main class="bg-accent">
       <Transition duration="1000">
-        <slot></slot>
+        <router-view />
+        <!-- <slot></slot> -->
       </Transition>
     </v-main>
 

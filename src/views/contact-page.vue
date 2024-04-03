@@ -215,7 +215,11 @@
               {{ review.title }}
             </p>
           </v-card>
-          <VDivider thickness="2" class="mt-7 d-md-none" v-if="i+1 != reviews.length"/>
+          <VDivider
+            thickness="2"
+            class="mt-7 d-md-none"
+            v-if="i + 1 != reviews.length"
+          />
         </VCol>
       </v-row>
     </main>

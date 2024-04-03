@@ -1,32 +1,18 @@
 <template>
   <VApp>
     <div>
-      <user-layout v-if="route.meta.layout == 'user'">
-        <router-view />
-      </user-layout>
-
-      <admin-layout v-if="route.meta.layout == 'admin'">
-        <!-- <nav>
-        <router-link to="/">Home Admin</router-link> |
-        <router-link to="/about">About Admin</router-link>
-      </nav> -->
-        <router-view />
-      </admin-layout>
-
-      <auth-layout v-if="route.meta.layout == 'auth'">
-        <router-view />
-      </auth-layout>
+      <router-view />
     </div>
   </VApp>
 </template>
 
 <script setup>
-import { useRoute } from "vue-router";
-import userLayout from "./layouts/userLayout.vue";
-import adminLayout from "./layouts/adminLayout.vue";
-import authLayout from "./layouts/authLayout.vue";
+// import { useRoute } from "vue-router";
+// import userLayout from "./layouts/userLayout.vue";
+// import adminLayout from "./layouts/adminLayout.vue";
+// import authLayout from "./layouts/authLayout.vue";
 
-const route = useRoute();
+// const route = useRoute();
 </script>
 <style>
 #app {
