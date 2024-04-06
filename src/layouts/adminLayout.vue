@@ -3,7 +3,7 @@
     <v-app-bar
       color="accent"
       class="align-baseline"
-      :height="$vuetify.display.mdAndDown ? '67' : '75'"
+      :height="$vuetify.display.mdAndDown ? '50' : '65'"
       flat
     >
       <div class="d-block d-md-none mx-4">
@@ -49,7 +49,7 @@
         <div class="mr-5">
           <VIcon icon="fa-home" size="x-small" color="accent"></VIcon>
         </div>
-        <div class="text-accent mt-2 font-weight-light">
+        <div class="text-accent mt-1 font-weight-light">
           <p>Home</p>
         </div>
         <!-- <div class="mx-3">

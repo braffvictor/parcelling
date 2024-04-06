@@ -83,6 +83,7 @@
                   <VCol cols="12">
                     <VBtn
                       color="primary"
+                      :loading="authentication.getters.getLoading.register"
                       block
                       type="submit"
                       size="large"
@@ -101,11 +102,13 @@
 </template>
 <script setup>
 import { ref } from "vue";
+import authentication from "@/store/authentication";
 
-const valid = ref(false);
-// console.log(valid.value);
+console.log(authentication.getters.getLoading);
 
+//form data and others
 const eye = ref(false);
+const valid = ref(false);
 
 const firstName = ref("");
 const lastName = ref("");
@@ -121,12 +124,20 @@ const passwordRules = [
   (v) => (v && v.length >= 6) || "Password must be greater than 6 characters",
 ];
 
-// const form = ref("form");
+//submit function
 const submit = () => {
   if (valid.value) {
     console.log("submit payload");
+    const payload = {
+      firstName: firstName.value,
+      lastName: lastName.value,
+      email: email.value,
+      password: password.value,
+    };
+
+    authentication.dispatch("registerUser", payload);
   } else {
-    console.log("error in submiion");
+    console.log("error in submission");
   }
 };
 </script>
