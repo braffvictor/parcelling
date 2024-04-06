@@ -18,7 +18,7 @@
 
       <VSpacer />
       <div class="mr-4">
-        <VIcon icon="fa-user-circle" size="small"></VIcon>
+        <VIcon @click="signOut" icon="fa-user-circle" size="small"></VIcon>
       </div>
     </v-app-bar>
 
@@ -75,6 +75,7 @@
 
 <script setup>
 import vuetify from "@/plugins/vuetify";
+import authentication from "@/store/authentication";
 import { onBeforeMount, ref } from "vue";
 
 const rail = ref(true);
@@ -90,6 +91,10 @@ onBeforeMount(() => {
     console.log("drawing");
   }
 });
+
+function signOut() {
+  authentication.dispatch("signOut");
+}
 </script>
 
 <style></style>

@@ -58,6 +58,7 @@
                       color="primary"
                       type="submit"
                       block
+                      :loading="loading.login"
                       size="large"
                       variant="flat"
                       >Submit</VBtn
@@ -73,15 +74,14 @@
   </div>
 </template>
 <script setup>
+import authentication from "@/store/authentication";
 import { ref } from "vue";
 
-const eye = ref(false);
-// form data
-const valid = ref(true);
+const loading = authentication.getters.getLoading;
 
-const submit = () => {
-  console.log("updated");
-};
+// form data and others
+const eye = ref(false);
+const valid = ref(false);
 
 const email = ref("");
 const emailRules = [
@@ -94,5 +94,17 @@ const passwordRules = [
   (v) => !!v || "Password is required",
   (v) => (v && v.length >= 6) || "Password must be greater than 6 characters",
 ];
+
+function submit() {
+  if (valid.value) {
+    const payload = {
+      email: email.value,
+      password: password.value,
+    };
+    authentication.dispatch("loginUser", payload);
+  } else {
+    console.log("form incomplete");
+  }
+}
 </script>
 <style></style>

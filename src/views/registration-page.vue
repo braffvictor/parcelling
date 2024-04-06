@@ -83,7 +83,7 @@
                   <VCol cols="12">
                     <VBtn
                       color="primary"
-                      :loading="authentication.getters.getLoading.register"
+                      :loading="loading.register"
                       block
                       type="submit"
                       size="large"
@@ -104,7 +104,8 @@
 import { ref } from "vue";
 import authentication from "@/store/authentication";
 
-console.log(authentication.getters.getLoading);
+// button loading
+const loading = authentication.getters.getLoading;
 
 //form data and others
 const eye = ref(false);

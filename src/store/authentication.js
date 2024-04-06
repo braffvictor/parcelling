@@ -3,8 +3,19 @@ import router from "@/router";
 
 //firestore functions
 import { db, auth } from "@/services/firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
+import {
+  collection,
+  doc,
+  getDoc,
+  onSnapshot,
+  setDoc,
+} from "firebase/firestore";
 
 //composable
 import { formatDate } from "../composables/forDate";
@@ -19,6 +30,7 @@ export default createStore({
 
     loading: {
       register: false,
+      login: false,
     },
   },
 
@@ -26,11 +38,17 @@ export default createStore({
     getLoading(state) {
       return state.loading;
     },
+    getUser(state) {
+      return state.user;
+    },
   },
 
   mutations: {
     setLoading(state, { type, is }) {
       state.loading[type] = is;
+    },
+    setUser(state, value) {
+      state.user = value;
     },
   },
 
@@ -87,6 +105,92 @@ export default createStore({
             timer: 7000,
           });
           commit("setLoading", { type: "register", is: false });
+        });
+    },
+
+    async loginUser({ commit }, payload) {
+      commit("setLoading", { type: "login", is: true });
+
+      await signInWithEmailAndPassword(auth, payload.email, payload.password)
+        .then((cred) => {
+          this.dispatch("validateUser", { uid: cred.user.uid });
+        })
+        .catch((error) => {
+          userflow.dispatch("initAlert", {
+            type: "error",
+            is: true,
+            message: error.code,
+            timer: 5000,
+          });
+          commit("setLoading", { type: "login", is: false });
+        });
+    },
+
+    async validateUser({ commit }, { uid }) {
+      commit("setLoading", { type: "login", is: true });
+
+      const colref = collection(db, "users");
+
+      const currentUser = doc(colref, uid);
+
+      await getDoc(currentUser).then((docRef) => {
+        if (docRef.exists) {
+          userflow.dispatch("initAlert", {
+            is: true,
+            type: "success",
+            message: "Login Successfully",
+            close: true,
+            timer: 5000,
+          });
+          router.push("/admin/dashboard");
+          commit("setLoading", { type: "login", is: false });
+        } else {
+          userflow.dispatch("initAlert", {
+            type: "error",
+            message: `User Doesn't Exist`,
+            is: true,
+            timer: 5000,
+          });
+          commit("setLoading", { type: "login", is: false });
+        }
+      });
+    },
+
+    userWatch() {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          this.dispatch("getUserData", { uid: user.uid });
+        } else {
+          router.push("/login");
+        }
+      });
+    },
+
+    getUserData({ commit }, { uid }) {
+      const currentUser = doc(db, "users", uid);
+      onSnapshot(currentUser, (docRef) => {
+        if (docRef.exists) {
+          const userData = docRef.data();
+          commit("setUser", userData);
+        } else {
+          router.push("/login");
+        }
+      });
+    },
+
+    signOut({ commit }) {
+      signOut(auth)
+        .then(() => {
+          commit("setUser", null);
+          router.push("/login");
+        })
+        .catch((error) => {
+          userflow.dispatch("initAlert", {
+            type: "error",
+            message: error.code,
+            is: true,
+            timer: 5000,
+          });
         });
     },
   },

@@ -18,7 +18,12 @@
   </div>
 </template>
 <script setup>
-import { ref } from "vue";
+import authentication from "@/store/authentication";
+import { ref, onMounted } from "vue";
+
+onMounted(() => {
+  authentication.dispatch("userWatch");
+});
 
 // import { useStore } from "vuex";
 
