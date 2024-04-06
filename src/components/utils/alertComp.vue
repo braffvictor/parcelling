@@ -22,7 +22,7 @@
             <p class="mx-2">
               <VIcon :icon="icons[alert.type]" size="small"></VIcon>
             </p>
-            <p class="text-body-1 text-left text-white">
+            <p class="text-md-body-1 text-body-2 text-left text-white">
               {{ alert.message }}
             </p>
             <VSpacer />

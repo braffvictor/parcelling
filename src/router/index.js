@@ -95,8 +95,13 @@ const routes = [
     children: [
       {
         path: "/admin/dashboard",
-        name: "Test",
+        name: "Dashboard",
         component: () => import("../views/admin/dashboard-page.vue"),
+      },
+      {
+        path: "/admin/shipments",
+        name: "Shipments",
+        component: () => import("../views/admin/shipments-page.vue"),
       },
     ],
   },

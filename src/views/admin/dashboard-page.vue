@@ -15,20 +15,61 @@
         />
       </VCol>
     </v-row>
+
+    <div>
+      <VCol cols="12">
+        <VCard
+          rounded="xl"
+          class="pa-4 mt-n7"
+          style="box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 5px"
+        >
+          <VRow justify="center">
+            <VCol cols="12" md="4" v-for="dash in dashCards" :key="dash.icon">
+              <AdminCard
+                :icon="dash.icon"
+                :length="dash.length"
+                :text="dash.text"
+                :to="dash.to"
+              />
+            </VCol>
+          </VRow>
+        </VCard>
+      </VCol>
+    </div>
   </div>
 </template>
 <script setup>
+import AdminCard from "@/components/adminUtils/admin-card.vue";
+import { ref, onMounted, computed } from "vue";
+
+//state management
+import adminflow from "@/store/adminflow";
 import authentication from "@/store/authentication";
-import { ref, onMounted } from "vue";
 
 onMounted(() => {
   authentication.dispatch("userWatch");
 });
 
-// import { useStore } from "vuex";
+const users = computed(() => {
+  return adminflow.getters.getState("users");
+});
 
-// const store = useStore();
-// console.log(store.getters.getCount);
+const dashCards = computed(() => {
+  return [
+    {
+      icon: "fa-user-circle",
+      text: "Admin(s)",
+      length: users.value.length,
+      to: "",
+    },
+    {
+      icon: "fa-box",
+      text: "Shipments",
+      length: "0",
+      to: "/admin/shipments",
+    },
+  ];
+});
 
 const search = ref("");
 </script>

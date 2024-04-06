@@ -33,35 +33,41 @@
       floating
       class="pa-0 px-2 py-5"
       location="left"
-      @click="rail = !rail"
+      @click.self="rail = !rail"
       :rail="$vuetify.display.mdAndDown ? false : rail"
     >
       <VCard
         variant="flat"
         tile
-        to=""
-        height="45"
-        class="d-flex purple mr-1 rounded-lg pa-3 w-100 align-center text-shades-white"
-        color="deep-purple-lighten-5"
-        theme="light"
+        :to="link.to"
+        height="50"
+        class="my-2 mr-1 rounded-lg pa-3 w-100 align-center text-shades-white"
+        :color="link.to == $route.path ? 'deep-purple-lighten-5' : 'accent'"
+        v-for="link in links"
+        :key="link.icon"
         @click="() => {}"
       >
-        <div class="mr-5">
-          <VIcon icon="fa-home" size="x-small" color="accent"></VIcon>
+        <div class="d-flex align-center">
+          <div class="mr-5">
+            <VIcon
+              :icon="link.icon"
+              size="x-small"
+              :color="
+                link.to == $route.path ? 'accent' : 'deep-purple-lighten-5'
+              "
+            ></VIcon>
+          </div>
+          <div
+            class="mt-1 font-weight-light text-dep"
+            :class="
+              link.to == $route.path
+                ? 'text-accent'
+                : 'text-deep-purple-lighten-5'
+            "
+          >
+            <p>{{ link.name }}</p>
+          </div>
         </div>
-        <div class="text-accent mt-1 font-weight-light">
-          <p>Home</p>
-        </div>
-        <!-- <div class="mx-3">
-          <v-img :src="link.img" min-width="30"></v-img>
-          <VSpacer />
-       </div>
-       <div
-         class="font-weight-medium"
-         :class="route.path == link.to ? 'text-white' : 'text-accent'"
-       >
-         {{ link.name }}
-       </div> -->
       </VCard>
     </VNavigationDrawer>
 
@@ -76,7 +82,7 @@
 <script setup>
 import vuetify from "@/plugins/vuetify";
 import authentication from "@/store/authentication";
-import { onBeforeMount, ref } from "vue";
+import { onBeforeMount, ref, computed } from "vue";
 
 const rail = ref(true);
 const drawer = ref(false);
@@ -95,6 +101,21 @@ onBeforeMount(() => {
 function signOut() {
   authentication.dispatch("signOut");
 }
+
+const links = computed(() => {
+  return [
+    {
+      icon: "fa-home",
+      name: "Dashboard",
+      to: "/admin/dashboard",
+    },
+    {
+      icon: "fa-truck",
+      name: "Shipments",
+      to: "/admin/shipments",
+    },
+  ];
+});
 </script>
 
 <style></style>

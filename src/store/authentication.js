@@ -1,4 +1,6 @@
 import { createStore } from "vuex";
+
+//imported the router file to use its functions
 import router from "@/router";
 
 //firestore functions
@@ -23,6 +25,7 @@ const { date } = formatDate("format");
 
 //state management
 import userflow from "./userflow";
+import adminflow from "./adminflow";
 
 export default createStore({
   state: {
@@ -175,6 +178,8 @@ export default createStore({
         } else {
           router.push("/login");
         }
+
+        adminflow.dispatch("initApp");
       });
     },
 
