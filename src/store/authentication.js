@@ -156,10 +156,10 @@ export default createStore({
       });
     },
 
-    userWatch() {
-      onAuthStateChanged(auth, (user) => {
+    async userWatch() {
+      onAuthStateChanged(auth, async (user) => {
         if (user) {
-          this.dispatch("getUserData", { uid: user.uid });
+          await this.dispatch("getUserData", { uid: user.uid });
         } else {
           router.push("/login");
         }
@@ -178,11 +178,18 @@ export default createStore({
       });
     },
 
-    signOut({ commit }) {
-      signOut(auth)
+    async signOut({ commit }) {
+      await signOut(auth)
         .then(() => {
           commit("setUser", null);
           router.push("/login");
+          userflow.dispatch("initAlert", {
+            type: "success",
+            message: "Logged Out Successfully",
+            is: true,
+            close: true,
+            timer: 3500,
+          });
         })
         .catch((error) => {
           userflow.dispatch("initAlert", {
