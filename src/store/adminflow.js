@@ -6,6 +6,8 @@ import { createStore } from "vuex";
 //for state management
 import userflow from "./userflow";
 
+//composables
+
 export default createStore({
   state: {
     users: [],
@@ -43,7 +45,7 @@ export default createStore({
         }
       });
 
-      console.log(state.users);
+      console.log(state);
     },
 
     initApp() {

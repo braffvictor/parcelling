@@ -34,7 +34,6 @@ defineProps({
     default: "",
   },
   length: {
-    type: Number,
     default: 0,
   },
   to: {

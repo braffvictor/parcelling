@@ -16,34 +16,27 @@
       </VCol>
     </v-row>
 
-    <vContainer class="mt-n10">
-      <vContainer>
-        <div>
-          <VCol cols="12">
-            <VCard
-              rounded="xl"
-              class="pa-4 mt-n7"
-              style="box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 5px"
-            >
-              <VRow justify="center">
-                <VCol
-                  cols="12"
-                  md="4"
-                  v-for="dash in dashCards"
-                  :key="dash.icon"
-                >
-                  <AdminCard
-                    :icon="dash.icon"
-                    :length="dash.length"
-                    :text="dash.text"
-                    :to="dash.to"
-                  />
-                </VCol>
-              </VRow>
-            </VCard>
-          </VCol>
-        </div>
-      </vContainer>
+    <vContainer>
+      <div>
+        <VCol cols="12">
+          <VCard
+            rounded="xl"
+            class="pa-4 mt-n10"
+            style="box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 5px"
+          >
+            <VRow justify="center">
+              <VCol cols="12" md="4" v-for="dash in dashCards" :key="dash.icon">
+                <AdminCard
+                  :icon="dash.icon"
+                  :length="dash.length"
+                  :text="dash.text"
+                  :to="dash.to"
+                />
+              </VCol>
+            </VRow>
+          </VCard>
+        </VCol>
+      </div>
     </vContainer>
   </div>
 </template>
