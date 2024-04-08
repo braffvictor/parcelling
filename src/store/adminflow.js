@@ -23,7 +23,7 @@ export default createStore({
     },
   },
   actions: {
-    async initAllUsers({ commit, state }) {
+    async initAllUsers({ commit }) {
       const colref = collection(db, "users");
 
       await getDocs(colref).then((docRefs) => {
@@ -45,7 +45,7 @@ export default createStore({
         }
       });
 
-      console.log(state);
+      // console.log(state);
     },
 
     initApp() {

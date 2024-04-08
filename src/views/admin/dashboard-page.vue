@@ -45,15 +45,14 @@ import AdminCard from "@/components/adminUtils/admin-card.vue";
 import { ref, onMounted, computed } from "vue";
 
 //state management
-import adminflow from "@/store/adminflow";
+// import adminflow from "@/store/adminflow";
 import authentication from "@/store/authentication";
+import { getState } from "@/composables/getState";
+
+const { state: users } = getState("adminflow", "users");
 
 onMounted(() => {
   authentication.dispatch("userWatch");
-});
-
-const users = computed(() => {
-  return adminflow.getters.getState("users");
 });
 
 const dashCards = computed(() => {
@@ -61,7 +60,7 @@ const dashCards = computed(() => {
     {
       icon: "fa-user-circle",
       text: "Admin(s)",
-      length: users.value.length,
+      length: users.length,
       to: "",
     },
     {
