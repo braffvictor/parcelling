@@ -25,7 +25,6 @@
             :key="shipment.text"
           >
             <AdminCard
-              :color="shipment.color"
               :font-and-icon-color="shipment.fontAndIconColor"
               icon="fa-truck"
               :length="shipment.length"

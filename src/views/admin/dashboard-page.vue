@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-white">
     <v-row class="bg-accent pa-4 mx-0 px-0" align="center">
       <VCol cols="6">
         <p class="text-white text-left py-4 px-2">Welcome, Super Admin</p>
@@ -42,18 +42,13 @@
 </template>
 <script setup>
 import AdminCard from "@/components/adminUtils/admin-card.vue";
-import { ref, onMounted, computed } from "vue";
+import { ref, computed } from "vue";
 
 //state management
 // import adminflow from "@/store/adminflow";
-import authentication from "@/store/authentication";
 import { getState } from "@/composables/getState";
 
 const { state: users } = getState("adminflow", "users");
-
-onMounted(() => {
-  authentication.dispatch("userWatch");
-});
 
 const dashCards = computed(() => {
   return [

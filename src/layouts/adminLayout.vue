@@ -1,5 +1,16 @@
 <template>
   <div class="">
+    <VBtn
+      color="primary"
+      @click="dialog = true"
+      icon
+      class="mb-10 mr-10"
+      size="large"
+      style="z-index: 100"
+      position="fixed"
+      location="bottom end"
+      ><VIcon icon="fa-plus" color="white"></VIcon
+    ></VBtn>
     <v-app-bar
       color="accent"
       class="align-baseline"
@@ -71,23 +82,40 @@
       </VCard>
     </VNavigationDrawer>
 
-    <v-main>
-      <router-view />
+    <v-main class="bg-white">
+      <Transition name="slide-fade">
+        <router-view />
+      </Transition>
     </v-main>
   </div>
+
+  <DialogComp :dialog="dialog" />
 
   <!-- app bar -->
 </template>
 
 <script setup>
+import DialogComp from "@/components/adminUtils/dialogComp.vue";
 import vuetify from "@/plugins/vuetify";
 import authentication from "@/store/authentication";
-import { onBeforeMount, ref, computed } from "vue";
+import { onBeforeMount, ref, computed, onMounted, onUpdated } from "vue";
 
+//for controlling the dialog component
+const dialog = ref(false);
+
+onUpdated(() => {
+  console.log(dialog.value);
+});
+
+//for Navigation drawer
 const rail = ref(true);
 const drawer = ref(false);
 
 const size = ref(vuetify.display.mdAndDown);
+
+onMounted(() => {
+  authentication.dispatch("userWatch");
+});
 
 onBeforeMount(() => {
   if (size.value) {
@@ -118,4 +146,17 @@ const links = computed(() => {
 });
 </script>
 
-<style></style>
+<style>
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateY(-20px);
+}
+</style>
