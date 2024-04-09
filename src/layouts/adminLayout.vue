@@ -87,25 +87,28 @@
         <router-view />
       </Transition>
     </v-main>
-  </div>
 
-  <DialogComp :dialog="dialog" />
+    <DialogComp :dialog="dialog" @closeDialog="dialog = false" />
+  </div>
 
   <!-- app bar -->
 </template>
 
 <script setup>
+//components
 import DialogComp from "@/components/adminUtils/dialogComp.vue";
+
+//plugin
 import vuetify from "@/plugins/vuetify";
+
+//state management
 import authentication from "@/store/authentication";
-import { onBeforeMount, ref, computed, onMounted, onUpdated } from "vue";
+
+//vue functions
+import { onBeforeMount, ref, computed, onMounted } from "vue";
 
 //for controlling the dialog component
 const dialog = ref(false);
-
-onUpdated(() => {
-  console.log(dialog.value);
-});
 
 //for Navigation drawer
 const rail = ref(true);

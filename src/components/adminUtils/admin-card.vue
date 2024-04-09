@@ -18,7 +18,7 @@
           :class="`text-${fontAndIconColor}`"
         >
           {{ text }}
-          <p class="" :class="`text-${fontAndIconColor}`">{{ length }}</p>
+          <p class="" :class="`text-${fontAndIconColor}`">{{ props.length }}</p>
         </div>
       </VCardText>
     </VCard>
@@ -28,7 +28,7 @@
 <script setup>
 import { defineProps } from "vue";
 
-defineProps({
+const props = defineProps({
   icon: {
     type: String,
     default: "",

@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class="h-100 w-100">
     <VDialog
-      v-on:update:model-value="dialog"
       scrollable
-      :fullscreen="$vuetify.display.mdAndDown ? true : false"
+      @update:model-value="dialog"
+      :model-value="dialog"
       persistent
       :overlay="true"
       max-width="500px"
@@ -16,7 +16,12 @@
           >
             <p>Add Shipment</p>
             <p>
-              <VIcon color="primary" size="small" icon="fa-close"></VIcon>
+              <VIcon
+                color="primary"
+                size="small"
+                icon="fa-close"
+                @click.self="emits('closeDialog')"
+              ></VIcon>
             </p>
           </div>
 
@@ -246,17 +251,17 @@
   </div>
 </template>
 <script setup>
-import { ref, defineProps } from "vue";
+/* eslint-disable */
+import { ref, defineProps, defineEmits } from "vue";
 
-defineProps({
+const emits = defineEmits(["closeDialog"]);
+
+const props = defineProps({
   dialog: {
     type: Boolean,
     default: false,
   },
 });
-
-//dialog
-// const dialog = ref(true);
 
 //dialog  form
 //profile data
