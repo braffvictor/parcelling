@@ -1,11 +1,11 @@
 <template>
   <div class="h-100 w-100">
     <VDialog
-      scrollable
       @update:model-value="dialog"
       :model-value="dialog"
       persistent
       :overlay="true"
+      :fullscreen="$vuetify.display.mdAndDown ? true : false"
       max-width="500px"
       transition="dialog-transition"
     >
