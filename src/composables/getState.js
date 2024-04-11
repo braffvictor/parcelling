@@ -1,8 +1,7 @@
 /* eslint-disable */
+import { reactive } from "vue";
 import adminflow from "../store/adminflow.js";
 import userflow from "../store/userflow.js";
-
-import { reactive } from "vue";
 
 export function getState(store, state) {
   const stores = reactive({
@@ -10,8 +9,8 @@ export function getState(store, state) {
     userflow: userflow,
   });
 
-  async function getter() {
-    return await stores[store].getters.getState(state);
+  function getter() {
+    return stores[store].getters.getState(state);
   }
 
   return {

@@ -6,6 +6,7 @@
       icon
       class="mb-10 mr-10"
       size="large"
+      :loading="loading.shipment"
       style="z-index: 100"
       position="fixed"
       location="bottom end"
@@ -88,7 +89,11 @@
       </Transition>
     </v-main>
 
-    <DialogComp :dialog="dialog" @closeDialog="dialog = false" />
+    <DialogComp
+      :dialog="dialog"
+      @closeDialog="dialog = false"
+      type="addShipment"
+    />
   </div>
 
   <!-- app bar -->
@@ -103,12 +108,14 @@ import vuetify from "@/plugins/vuetify";
 
 //state management
 import authentication from "@/store/authentication";
+import adminflow from "@/store/adminflow";
 
 //vue functions
 import { onBeforeMount, ref, computed, onMounted } from "vue";
 
 //for controlling the dialog component
 const dialog = ref(false);
+const loading = adminflow.state.loading.shipment;
 
 //for Navigation drawer
 const rail = ref(true);

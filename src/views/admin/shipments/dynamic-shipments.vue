@@ -13,7 +13,7 @@
     </v-row>
 
     <v-row class="mx-0 px-0" justify="center">
-      <VCol cols="12" md="6">
+      <VCol cols="11" md="6">
         <VTextField
           v-model="search"
           label="Search Shipment"
@@ -23,12 +23,28 @@
         />
       </VCol>
     </v-row>
+
+    <v-row class="mx-0 px-0" justify="center">
+      <VCol
+        cols="11"
+        md="7"
+        v-for="shipment in dynamiCard[$route.params.id].array"
+        :key="shipment.id"
+      >
+        <AdminPropCard :actions="actions" :data="shipment" />
+      </VCol>
+    </v-row>
+
+    <DialogComp :dialog="dialog" :type="type" :shipment="shipment" />
   </div>
 </template>
 
 <script setup>
 //components
 import AdminCard from "@/components/adminUtils/admin-card.vue";
+import AdminPropCard from "@/components/adminUtils/adminPropCard.vue";
+import DialogComp from "@/components/adminUtils/dialogComp.vue";
+
 //state management
 import adminflow from "@/store/adminflow";
 
@@ -36,26 +52,60 @@ import { computed, ref } from "vue";
 
 const search = ref("");
 
+//for dialog
+const dialog = ref(false);
+const type = ref("");
+const shipment = ref(null);
+
+const actions = computed(() => {
+  return [
+    {
+      text: "View",
+      color: "primary",
+      action: (event, data) => {
+        console.log(data);
+        dialog.value = true;
+        type.value = "viewShipment";
+        shipment.value = data;
+      },
+    },
+    {
+      text: "Edit",
+      color: "accent",
+      action: (event, data) => {
+        console.log(data);
+        dialog.value = true;
+        type.value = "editShipment";
+        shipment.value = data;
+      },
+    },
+  ];
+});
+
 const dynamiCard = computed(() => {
   return {
     all: {
       fontAndIconColor: "white",
       length: adminflow.state.shipments.length,
+      array: adminflow.state.shipments,
       text: "All Shipments",
     },
     completed: {
       fontAndIconColor: "green",
       length: completedShipment.value.length,
+      array: completedShipment.value,
       text: "Completed Shipments",
     },
     ongoing: {
       fontAndIconColor: "orange",
       length: ongoingShipment.value.length,
+      array: ongoingShipment.value,
       text: "Ongoing Shipments",
     },
     closed: {
       fontAndIconColor: "red",
       length: closedShipment.value.length,
+      array: closedShipment.value,
       text: "Closed Shipments",
     },
   };
