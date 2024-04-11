@@ -9,8 +9,9 @@ export function getState(store, state) {
     adminflow: adminflow,
     userflow: userflow,
   });
-  function getter() {
-    return stores[store].getters.getState(state);
+
+  async function getter() {
+    return await stores[store].getters.getState(state);
   }
 
   return {

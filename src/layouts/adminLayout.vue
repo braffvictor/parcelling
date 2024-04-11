@@ -117,10 +117,12 @@ const drawer = ref(false);
 const size = ref(vuetify.display.mdAndDown);
 
 onMounted(() => {
-  authentication.dispatch("userWatch");
+  console.log("mounting");
 });
 
 onBeforeMount(() => {
+  authentication.dispatch("userWatch");
+  console.log("before mounting");
   if (size.value) {
     drawer.value = false;
   } else {

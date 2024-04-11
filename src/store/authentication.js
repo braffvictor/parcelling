@@ -174,12 +174,12 @@ export default createStore({
       onSnapshot(currentUser, (docRef) => {
         if (docRef.exists) {
           const userData = docRef.data();
+          adminflow.dispatch("initApp");
+
           commit("setUser", userData);
         } else {
           router.push("/login");
         }
-
-        adminflow.dispatch("initApp");
       });
     },
 

@@ -18,7 +18,9 @@
           :class="`text-${fontAndIconColor}`"
         >
           {{ text }}
-          <p class="" :class="`text-${fontAndIconColor}`">{{ props.length }}</p>
+          <p class="font-weight-bold" :class="`text-${fontAndIconColor}`">
+            {{ props.length }}
+          </p>
         </div>
       </VCardText>
     </VCard>

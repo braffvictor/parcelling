@@ -126,6 +126,7 @@ export default createStore({
 
       //added prop to arrange array
       payload.formattedDate = date;
+      payload.status = "ongoing";
 
       await addDoc(colref, payload)
         .then((docRef) => {
@@ -191,17 +192,17 @@ export default createStore({
         .catch((error) => {
           userflow.dispatch("initAlert", {
             is: true,
-            message: "No Data",
+            message: error.code,
             type: "error",
             timer: 5000,
-            close: true,
           });
         });
     },
 
-    initApp() {
-      this.dispatch("initAllUsers");
-      this.dispatch("initAllShipments");
+    async initApp() {
+      await this.dispatch("initAllUsers");
+      await this.dispatch("initAllShipments");
+      console.log("getting");
     },
   },
   modules: {},

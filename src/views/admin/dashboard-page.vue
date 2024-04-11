@@ -46,23 +46,25 @@ import { ref, computed } from "vue";
 
 //state management
 // import adminflow from "@/store/adminflow";
-import { getState } from "@/composables/getState";
+import adminflow from "@/store/adminflow";
 
-const { state: users } = getState("adminflow", "users");
-const { state: shipments } = getState("adminflow", "shipments");
+// using composables to get the state of...seems not to be changing at real time
+// import { getState } from "@/composables/getState";
+// const { state: users } = getState("adminflow", "users");
+// const { state: shipments } =  getState("adminflow", "shipments");
 
 const dashCards = computed(() => {
   return [
     {
       icon: "fa-user-circle",
       text: "Admin(s)",
-      length: users.length,
+      length: adminflow.getters.getState("users").length,
       to: "",
     },
     {
       icon: "fa-box",
       text: "Shipments",
-      length: shipments.length,
+      length: adminflow.state.shipments.length,
       to: "/admin/shipments",
     },
   ];

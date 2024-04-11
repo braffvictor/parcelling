@@ -29,6 +29,7 @@
               icon="fa-truck"
               :length="shipment.length"
               :text="shipment.text"
+              :to="shipment.to"
             />
           </VCol>
         </VRow>
@@ -39,6 +40,7 @@
 
 <script setup>
 import AdminCard from "@/components/adminUtils/admin-card.vue";
+import adminflow from "@/store/adminflow";
 import { computed } from "vue";
 
 const shipments = computed(() => {
@@ -46,28 +48,48 @@ const shipments = computed(() => {
     {
       color: "",
       text: "All Shipments",
-      length: 0,
+      length: adminflow.state.shipments.length,
       fontAndIconColor: "accent",
+      to: "/admin/shipments/all",
     },
     {
       color: "",
       text: "All Completed Shipments",
-      length: 0,
+      length: completedShipment.value.length,
       fontAndIconColor: "green",
+      to: "/admin/shipments/completed",
     },
     {
       color: "",
       text: "All Ongoing Shipments",
-      length: 0,
+      length: ongoingShipment.value.length,
       fontAndIconColor: "orange",
+      to: "/admin/shipments/ongoing",
     },
     {
       color: "",
       text: "All Closed Shipments",
-      length: 0,
+      length: closedShipment.value.length,
       fontAndIconColor: "red",
+      to: "/admin/shipments/closed",
     },
   ];
+});
+
+const completedShipment = computed(() => {
+  return adminflow.state.shipments.filter((shipment) => {
+    return shipment.status == "completed";
+  });
+});
+const ongoingShipment = computed(() => {
+  return adminflow.state.shipments.filter((shipment) => {
+    return shipment.status == "ongoing";
+  });
+});
+const closedShipment = computed(() => {
+  return adminflow.state.shipments.filter((shipment) => {
+    return shipment.status == "closed";
+  });
 });
 </script>
 <style></style>

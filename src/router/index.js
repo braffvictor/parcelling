@@ -101,7 +101,13 @@ const routes = [
       {
         path: "/admin/shipments",
         name: "Shipments",
-        component: () => import("../views/admin/shipments-page.vue"),
+        component: () => import("../views/admin/shipments/shipments-page.vue"),
+      },
+      {
+        path: "/admin/shipments/:id",
+        name: "Dynamic Shipment",
+        component: () =>
+          import("../views/admin/shipments/dynamic-shipments.vue"),
       },
     ],
   },
