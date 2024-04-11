@@ -49,6 +49,7 @@ import { ref, computed } from "vue";
 import { getState } from "@/composables/getState";
 
 const { state: users } = getState("adminflow", "users");
+const { state: shipments } = getState("adminflow", "shipments");
 
 const dashCards = computed(() => {
   return [
@@ -61,7 +62,7 @@ const dashCards = computed(() => {
     {
       icon: "fa-box",
       text: "Shipments",
-      length: "0",
+      length: shipments.length,
       to: "/admin/shipments",
     },
   ];
