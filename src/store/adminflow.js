@@ -82,24 +82,27 @@ export default createStore({
     async initAllUsers({ commit }) {
       const colref = collection(db, "users");
 
-      await getDocs(colref).then((docRefs) => {
-        if (!docRefs.empty) {
-          const arr = [];
-          docRefs.forEach((docs) => {
-            arr.push(docs.data());
-          });
+      await getDocs(colref)
+        .then((docRefs) => {
+          if (!docRefs.empty) {
+            const arr = [];
+            docRefs.forEach((docs) => {
+              arr.push(docs.data());
+            });
 
-          commit("setState", { type: "users", value: arr });
-        } else {
+            commit("setState", { type: "users", value: arr });
+          } else {
+            commit("setState", { type: "users", value: [] });
+          }
+        })
+        .catch((error) => {
           userflow.dispatch("initAlert", {
-            is: true,
-            message: "No Data",
             type: "error",
-            timer: 5000,
-            close: true,
+            is: true,
+            message: error.code,
+            timer: 7000,
           });
-        }
-      });
+        });
     },
 
     async addShipment({ commit, dispatch }, payload) {
@@ -165,22 +168,27 @@ export default createStore({
     async initAllShipments({ commit }) {
       const colref = collection(db, "shipments");
 
-      await getDocs(colref).then((docRefs) => {
-        if (!docRefs.empty) {
-          const arr = [];
-          let sorting;
-          docRefs.forEach((docs) => {
-            arr.push(docs.data());
+      await getDocs(colref)
+        .then((docRefs) => {
+          if (!docRefs.empty) {
+            const arr = [];
+            let sorting;
+            docRefs.forEach((docs) => {
+              arr.push(docs.data());
 
-            sorting = arr.sort((a, b) => {
-              const dateA = new Date(a.formattedDate);
-              const dateB = new Date(b.formattedDate);
+              sorting = arr.sort((a, b) => {
+                const dateA = new Date(a.formattedDate);
+                const dateB = new Date(b.formattedDate);
 
-              return dateB - dateA;
+                return dateB - dateA;
+              });
             });
-          });
-          commit("setState", { type: "shipments", value: sorting });
-        } else {
+            commit("setState", { type: "shipments", value: sorting });
+          } else {
+            commit("setState", { type: "shipments", value: [] });
+          }
+        })
+        .catch((error) => {
           userflow.dispatch("initAlert", {
             is: true,
             message: "No Data",
@@ -188,8 +196,7 @@ export default createStore({
             timer: 5000,
             close: true,
           });
-        }
-      });
+        });
     },
 
     initApp() {
