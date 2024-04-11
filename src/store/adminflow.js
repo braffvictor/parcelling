@@ -194,6 +194,7 @@ export default createStore({
 
     initApp() {
       this.dispatch("initAllUsers");
+      this.dispatch("initAllShipments");
     },
   },
   modules: {},
