@@ -53,6 +53,14 @@
           :key="action.color"
           >{{ action.text }}</VBtn
         >
+        <VBtn
+          color="red"
+          block
+          :loading="loading.delete"
+          variant="flat"
+          @click="deleteShipment(data)"
+          >Delete</VBtn
+        >
       </VCardText>
     </VCard>
   </div>
@@ -62,16 +70,23 @@
 //imported picture
 // import youth from "@/assets/youth.jpg";
 
+import adminflow from "@/store/adminflow";
 import { reactive } from "vue";
 
 //vue functions
 import { defineProps } from "vue";
+
+const loading = adminflow.state.loading;
 
 const colors = reactive({
   completed: "green",
   ongoing: "orange",
   closed: "red",
 });
+
+const deleteShipment = (data) => {
+  adminflow.dispatch("deleteShipment", data);
+};
 
 const props = defineProps({
   data: {

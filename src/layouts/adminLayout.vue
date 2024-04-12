@@ -115,7 +115,7 @@ import { onBeforeMount, ref, computed, onMounted } from "vue";
 
 //for controlling the dialog component
 const dialog = ref(false);
-const loading = adminflow.state.loading.shipment;
+const loading = adminflow.state.loading;
 
 //for Navigation drawer
 const rail = ref(true);

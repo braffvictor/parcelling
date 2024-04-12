@@ -1,5 +1,5 @@
 <template>
-  <div class="h-100 w-100">
+  <div class="" style="height: auto">
     <VDialog
       @update:model-value="dialog"
       :model-value="dialog"
@@ -7,26 +7,32 @@
       :overlay="true"
       :fullscreen="$vuetify.display.mdAndDown ? true : false"
       max-width="500px"
+      height="auto"
       transition="dialog-transition"
       scrollable
-      style="z-index: 5000; overflow-y: auto"
+      scroll-strategy="none"
+      style="height: auto; overflow-y: visible"
     >
       <div>
         <!-- to add shipment -->
         <AddShipment
-          @close-dialog="emits('closeDialog')"
+          @closeDialog="emits('closeDialog')"
           v-if="type == 'addShipment'"
         />
 
-        <!-- to edit shipment
-        <EditShipment v-if="type == 'editShipment'" :shipment="shipment" />
+        <!-- to edit shipment -->
+        <EditShipment
+          v-if="type == 'editShipment'"
+          :shipmentData="shipment"
+          @closeDialog="emits('closeDialog')"
+        />
 
-        to view the shipment
+        <!-- to view the shipment -->
         <ViewShipment
           v-if="type == 'viewShipment'"
           :shipment="shipment"
-          @close-dialog="emits('closeDialog')"
-        /> -->
+          @closeDialog="emits('closeDialog')"
+        />
       </div>
     </VDialog>
   </div>
@@ -55,6 +61,10 @@ const props = defineProps({
     },
   },
 });
+
+const test = () => {
+  console.log("view emitted");
+};
 
 //form control
 //submit function

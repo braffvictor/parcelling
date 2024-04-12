@@ -4,6 +4,7 @@ import { db, str } from "@/services/firebase";
 import {
   addDoc,
   collection,
+  deleteDoc,
   doc,
   getDocs,
   updateDoc,
@@ -26,6 +27,7 @@ export default createStore({
 
     loading: {
       shipment: false,
+      delete: false,
     },
   },
   getters: {
@@ -128,6 +130,18 @@ export default createStore({
       payload.formattedDate = date;
       payload.status = "ongoing";
 
+      let trackingCode = "";
+
+      function getTrackingCode() {
+        for (let index = 0; index < 6; index++) {
+          let rando = Math.round(Math.random() * 9);
+          trackingCode += rando.toString();
+        }
+        return trackingCode;
+      }
+
+      payload.trackingCode = getTrackingCode();
+
       await addDoc(colref, payload)
         .then((docRef) => {
           const currentUserDoc = doc(colref, docRef.id);
@@ -143,6 +157,7 @@ export default createStore({
                 close: true,
                 timer: 5000,
               });
+              this.dispatch("initAllShipments");
               commit("setLoading", { type: "shipment", is: false });
             })
             .catch((error) => {
@@ -199,10 +214,37 @@ export default createStore({
         });
     },
 
+    async deleteShipment(context, payload) {
+      this.commit("setLoading", { type: "delete", is: true });
+
+      const currentUserDoc = doc(db, "shipments", payload.id);
+
+      await deleteDoc(currentUserDoc)
+        .then(() => {
+          userflow.dispatch("initAlert", {
+            is: true,
+            message: `Shipment for ${payload.fullName} Deleted Successfully`,
+            type: "error",
+            close: true,
+            timer: 6000,
+          });
+          this.commit("setLoading", { type: "delete", is: false });
+          this.dispatch("initAllShipments");
+        })
+        .catch((error) => {
+          userflow.dispatch("initAlert", {
+            type: "error",
+            timer: 6000,
+            message: error.code,
+            is: true,
+          });
+          this.commit("setLoading", { type: "delete", is: false });
+        });
+    },
+
     async initApp() {
       await this.dispatch("initAllUsers");
       await this.dispatch("initAllShipments");
-      console.log("getting");
     },
   },
   modules: {},

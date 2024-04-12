@@ -1,6 +1,6 @@
 <template>
-  <div class="h-100 w-100">
-    <VCard variant="flat" color="accent">
+  <div class="" style="height: auto; overflow: visible">
+    <VCard variant="flat" color="accent" style="height: auto">
       <VCardText>
         <div
           class="d-flex align-center justify-space-between text-accent-text-subtitle-1 text-md-h6"

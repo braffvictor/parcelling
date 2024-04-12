@@ -35,7 +35,12 @@
       </VCol>
     </v-row>
 
-    <DialogComp :dialog="dialog" :type="type" :shipment="shipment" />
+    <DialogComp
+      :dialog="dialog"
+      :type="type"
+      :shipment="shipment"
+      @closeDialog="dialog = false"
+    />
   </div>
 </template>
 

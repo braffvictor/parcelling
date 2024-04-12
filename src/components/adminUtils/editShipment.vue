@@ -1,11 +1,11 @@
 <template>
-  <div class="h-100 w-100">
-    <VCard variant="flat" color="accent">
+  <div class="" style="height: auto; overflow: visible">
+    <VCard variant="flat" color="accent" style="height: auto">
       <VCardText>
         <div
           class="d-flex align-center justify-space-between text-accent-text-subtitle-1 text-md-h6"
         >
-          <p>Add Shipment</p>
+          <p>Edit Shipment</p>
           <p>
             <VIcon
               color="primary"
@@ -70,7 +70,7 @@
               </VCol>
               <VCol cols="12" class="my-0 py-0">
                 <VTextField
-                  v-model="fullName"
+                  v-model="userfullName"
                   label="FullName"
                   color="primary"
                   class="text-white"
@@ -301,6 +301,12 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  shipmentData: {
+    type: Object,
+    default: () => {
+      return {};
+    },
+  },
 });
 
 //form control
@@ -364,6 +370,17 @@ const fullName = ref("");
 const email = ref("");
 const phoneNumber = ref("");
 const address = ref("");
+
+console.log(props.shipmentData.fullName);
+
+const userfullName = computed({
+  get() {
+    return props.shipmentData.fullName;
+  },
+  set(val) {
+    fullName.value = val;
+  },
+});
 
 //shipment data
 const shipmentPhoto = ref(null);
