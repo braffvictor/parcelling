@@ -107,6 +107,52 @@ export default createStore({
         });
     },
 
+    async editShipment({ commit, dispatch }, payload) {
+      commit("setLoading", { type: "shipment", is: true });
+      const colref = collection(db, "shipments");
+
+      if (payload.passportP) {
+        const passportPhoto = await dispatch("photoFN", {
+          photo: payload.passportPhoto,
+          path: "shipments",
+        });
+        payload.passportPhoto = passportPhoto;
+      }
+
+      if (payload.shipmentP) {
+        const shipmentPhoto = await dispatch("photoFN", {
+          photo: payload.shipmentPhoto,
+          path: "shipments",
+        });
+
+        payload.shipmentPhoto = shipmentPhoto;
+      }
+
+      const currentUserDoc = doc(colref, payload.id);
+
+      await updateDoc(currentUserDoc, payload)
+        .then(() => {
+          userflow.dispatch("initAlert", {
+            type: "success",
+            is: true,
+            message: `Shipment For ${payload.fullName} Updated Successfully`,
+            close: true,
+            timer: 6000,
+          });
+          dispatch("initAllShipments");
+          commit("setLoading", { type: "shipment", is: false });
+        })
+        .catch((error) => {
+          userflow.dispatch("initAlert", {
+            type: "error",
+            is: true,
+            message: error.code,
+            timer: 7000,
+          });
+          commit("setLoading", { type: "shipment", is: false });
+        });
+    },
+
     async addShipment({ commit, dispatch }, payload) {
       commit("setLoading", { type: "shipment", is: true });
 

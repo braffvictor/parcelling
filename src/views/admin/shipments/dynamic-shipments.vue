@@ -1,7 +1,7 @@
 <template>
   <div class="mt-5">
     <v-row class="mx-0 px-0" justify="center">
-      <VCol cols="12" md="4">
+      <VCol cols="11" md="4">
         <AdminCard
           color="bg-accent"
           :font-and-icon-color="dynamiCard[$route.params.id].fontAndIconColor"
@@ -24,7 +24,11 @@
       </VCol>
     </v-row>
 
-    <v-row class="mx-0 px-0" justify="center">
+    <v-row
+      class="mx-0 px-0"
+      justify="center"
+      v-if="dynamiCard[$route.params.id].array.length > 0"
+    >
       <VCol
         cols="11"
         md="7"
@@ -32,6 +36,13 @@
         :key="shipment.id"
       >
         <AdminPropCard :actions="actions" :data="shipment" />
+      </VCol>
+    </v-row>
+
+    <v-row class="mx-0 px-0" justify="center" v-else>
+      <VCol cols="11" md="7">
+        <VIcon color="primary" size="60" icon="fa-database"></VIcon>
+        <p class="text-center text-accent mt-5">No Shipment Available</p>
       </VCol>
     </v-row>
 
@@ -92,7 +103,7 @@ const dynamiCard = computed(() => {
     all: {
       fontAndIconColor: "white",
       length: adminflow.state.shipments.length,
-      array: adminflow.state.shipments,
+      array: allShipment.value,
       text: "All Shipments",
     },
     completed: {
@@ -116,20 +127,57 @@ const dynamiCard = computed(() => {
   };
 });
 
+const allShipment = computed(() => {
+  return adminflow.state.shipments.filter((shipment) => {
+    return (
+      shipment.status.includes(search.value) ||
+      shipment.fullName.includes(search.value) ||
+      shipment.fullName.toLowerCase().includes(search.value) ||
+      shipment.email.includes(search.value) ||
+      shipment.shipment.includes(search.value) ||
+      shipment.shipment.toLowerCase().includes(search.value)
+    );
+  });
+});
+
 const completedShipment = computed(() => {
   return adminflow.state.shipments.filter((shipment) => {
-    return shipment.status == "completed";
+    return (
+      shipment.status == "Completed" &&
+      (shipment.status.includes(search.value) ||
+        shipment.fullName.includes(search.value) ||
+        shipment.fullName.toLowerCase().includes(search.value) ||
+        shipment.email.includes(search.value) ||
+        shipment.shipment.includes(search.value) ||
+        shipment.shipment.toLowerCase().includes(search.value))
+    );
   });
 });
 console.log(completedShipment.value);
 const ongoingShipment = computed(() => {
   return adminflow.state.shipments.filter((shipment) => {
-    return shipment.status == "ongoing";
+    return (
+      shipment.status == "Ongoing" &&
+      (shipment.status.includes(search.value) ||
+        shipment.fullName.includes(search.value) ||
+        shipment.fullName.toLowerCase().includes(search.value) ||
+        shipment.email.includes(search.value) ||
+        shipment.shipment.includes(search.value) ||
+        shipment.shipment.toLowerCase().includes(search.value))
+    );
   });
 });
 const closedShipment = computed(() => {
   return adminflow.state.shipments.filter((shipment) => {
-    return shipment.status == "closed";
+    return (
+      shipment.status == "Closed" &&
+      (shipment.status.includes(search.value) ||
+        shipment.fullName.includes(search.value) ||
+        shipment.fullName.toLowerCase().includes(search.value) ||
+        shipment.email.includes(search.value) ||
+        shipment.shipment.includes(search.value) ||
+        shipment.shipment.toLowerCase().includes(search.value))
+    );
   });
 });
 </script>

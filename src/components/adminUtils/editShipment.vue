@@ -32,14 +32,13 @@
             <p
               class="text-button text-center font-weight-bold mx-3 text-capitalize text-white"
             >
-              Profile details
+              Edit Profile details
             </p>
             <v-row class="mx-0 px-0" justify="center" no-gutters>
               <VCol cols="12">
                 <v-file-input
                   v-model="passport"
                   color="primary"
-                  :rules="[(v) => !!v || 'Client Photo is required']"
                   label="Client Passport"
                   prepend-inner-icon="fa-camera"
                   prepend-icon=""
@@ -67,33 +66,45 @@
                   <v-img class="mx-auto text-center" :src="passportImage">
                   </v-img>
                 </VCard>
+
+                <VCard
+                  max-height="200"
+                  max-width="200"
+                  variant="flat"
+                  rounded="lg"
+                  class="bg-transparent mx-auto text-center mb-7"
+                  v-else
+                >
+                  <v-img
+                    class="mx-auto text-center"
+                    :src="shipmentData.passportPhoto"
+                  >
+                  </v-img>
+                </VCard>
               </VCol>
               <VCol cols="12" class="my-0 py-0">
                 <VTextField
-                  v-model="userfullName"
+                  v-model="shipmentfullName"
                   label="FullName"
                   color="primary"
                   class="text-white"
-                  :rules="[(v) => !!v || 'FullName is required']"
                   variant="outlined"
                 />
               </VCol>
               <VCol cols="12" class="my-0 py-0">
                 <VTextField
-                  v-model="email"
+                  v-model="shipmentEmail"
                   label="Email"
                   color="primary"
-                  :rules="[(v) => !!v || 'Email is required']"
                   class="text-white"
                   variant="outlined"
                 />
               </VCol>
               <VCol cols="12" class="my-0 py-0">
                 <VTextField
-                  v-model="phoneNumber"
+                  v-model="shipmentphoneNumber"
                   label="Phone Number"
                   color="primary"
-                  :rules="[(v) => !!v || 'Phone Number is required']"
                   type="tel"
                   class="text-white"
                   variant="outlined"
@@ -101,10 +112,9 @@
               </VCol>
               <VCol cols="12" class="my-0 py-0">
                 <VTextField
-                  v-model="address"
+                  v-model="shipmentAddress"
                   label="Residential Address"
                   color="primary"
-                  :rules="[(v) => !!v || 'Residential Address is required']"
                   class="text-white"
                   variant="outlined"
                 />
@@ -113,8 +123,20 @@
               <p
                 class="text-button mx-3 text-capitalize font-weight-bold text-white"
               >
-                Shipment details
+                Edit Shipment details
               </p>
+
+              <VCol cols="12">
+                <VSelect
+                  :items="['Completed', 'Ongoing', 'Closed']"
+                  v-model="shipmentStatus"
+                  label="Shipment Status"
+                  color="primary"
+                  variant="outlined"
+                  item-color="primary"
+                  class="text-white text-capitalize"
+                ></VSelect>
+              </VCol>
 
               <VCol cols="12">
                 <v-file-input
@@ -122,7 +144,6 @@
                   color="primary"
                   label="Shipment Photo"
                   prepend-inner-icon="fa-camera"
-                  :rules="[(v) => !!v || 'Shipment Photo is required']"
                   prepend-icon=""
                   @update:model-value="showShipmentImage"
                   variant="outlined"
@@ -148,14 +169,26 @@
                   <v-img class="mx-auto text-center" :src="shipmentPhotoImage">
                   </v-img>
                 </VCard>
+
+                <VCard
+                  max-height="300"
+                  max-width="300"
+                  variant="flat"
+                  rounded="lg"
+                  class="bg-transparent mx-auto text-center mb-7"
+                  v-else
+                >
+                  <v-img
+                    class="mx-auto text-center"
+                    :src="shipmentData.shipmentPhoto"
+                  >
+                  </v-img>
+                </VCard>
               </VCol>
               <VCol cols="12" class="my-0 py-0">
                 <VTextField
-                  v-model="shipment"
+                  v-model="shipmentName"
                   label="Shipment"
-                  :rules="[
-                    (v) => !!v || 'Shipment Name and Detail is required',
-                  ]"
                   color="primary"
                   class="text-white"
                   variant="outlined"
@@ -163,10 +196,19 @@
               </VCol>
               <VCol cols="12" class="my-0 py-0">
                 <VTextField
-                  v-model="location"
+                  v-model="shipmentLocation"
                   label="Current Location"
                   color="primary"
-                  :rules="[(v) => !!v || 'Location is required']"
+                  class="text-white"
+                  variant="outlined"
+                />
+              </VCol>
+              <VCol cols="12" class="my-0 py-0">
+                <VTextField
+                  v-model="units"
+                  :label="`Units - ${shipmentUnits}`"
+                  color="primary"
+                  type="tel"
                   class="text-white"
                   variant="outlined"
                 />
@@ -174,9 +216,8 @@
               <VCol cols="12">
                 <VAutocomplete
                   :items="symbolArray"
-                  v-model="symbol"
+                  v-model="shipmentsymbol"
                   color="primary"
-                  :rules="[(v) => !!v || 'Symbol is required']"
                   class="text-white"
                   item-color="primary"
                   variant="outlined"
@@ -188,31 +229,19 @@
               <VCol cols="12" class="my-0 py-0">
                 <VTextField
                   v-model="shippingCostAmount"
-                  label="Shipping Cost"
-                  color="primary"
-                  :rules="[(v) => !!v || 'Shipping Cost is required']"
-                  type="tel"
-                  class="text-white"
-                  variant="outlined"
-                />
-              </VCol>
-              <VCol cols="12" class="my-0 py-0">
-                <VTextField
-                  v-model="units"
-                  label="Units"
-                  :rules="[(v) => !!v || 'Number of Units is required']"
+                  :label="`Shipping Cost - ${shipmentshippingCost}.00`"
                   color="primary"
                   type="tel"
                   class="text-white"
                   variant="outlined"
                 />
               </VCol>
+
               <VCol cols="12" class="my-0 py-0">
                 <VTextField
                   v-model="priceAmount"
-                  label="Price"
+                  :label="`Shipment Price - ${shipmentPrice}.00`"
                   color="primary"
-                  :rules="[(v) => !!v || 'Price is required']"
                   type="tel"
                   class="text-white"
                   variant="outlined"
@@ -221,8 +250,7 @@
               <VCol cols="12" class="my-0 py-0">
                 <VTextField
                   v-model="vatAmount"
-                  label="VAT"
-                  :rules="[(v) => !!v || 'VAT is required']"
+                  :label="`VAT - ${shipmentVat}.00`"
                   color="primary"
                   type="tel"
                   class="text-white"
@@ -232,19 +260,17 @@
               <VCol cols="12" class="my-0 py-0">
                 <VTextField
                   v-model="insuranceAmount"
-                  label="Insurance"
+                  :label="`VAT - ${shipmentInsurance}.00`"
                   color="primary"
                   type="tel"
                   class="text-white"
-                  :rules="[(v) => !!v || 'Insurance is required']"
                   variant="outlined"
                 />
               </VCol>
               <VCol cols="12" class="my-0 py-0">
                 <VTextField
                   v-model="serviceChargeAmount"
-                  label="Service Charge"
-                  :rules="[(v) => !!v || 'Service Charge is required']"
+                  :label="`Service Charge - ${shipmentserviceCharge}.00`"
                   color="primary"
                   class="text-white"
                   variant="outlined"
@@ -253,16 +279,14 @@
               </VCol>
               <VCol cols="12" class="my-0 py-0">
                 <VTextField
-                  v-model="dueDate"
+                  v-model="shipmentdueDate"
                   label="Due Date"
                   type="date"
                   color="primary"
-                  :rules="[(v) => !!v || 'Due Date is required']"
                   class="text-white"
                   variant="outlined"
                 />
               </VCol>
-
               <VCol cols="12">
                 <VBtn
                   color="primary"
@@ -271,12 +295,12 @@
                   variant="flat"
                   size="large"
                   :loading="loading.shipment"
-                  >Create Shipment
-                  <span class="mx-1" v-if="fullName"> for </span>
+                  >Edit Shipment
+                  <span class="mx-1" v-if="shipmentfullName"> for </span>
                   {{
-                    fullName.length > 7
-                      ? fullName.slice(0, 7) + "..."
-                      : fullName
+                    shipmentfullName.length > 7
+                      ? shipmentfullName.slice(0, 7) + "..."
+                      : shipmentfullName
                   }}</VBtn
                 >
               </VCol>
@@ -310,34 +334,52 @@ const props = defineProps({
 });
 
 //form control
-const valid = ref(false);
+const valid = ref(true);
 //submit function
 const submit = () => {
   if (valid.value) {
     const payload = {
+      id: props.shipmentData.id,
       // client details
-      passportPhoto: passport.value[0],
-      fullName: fullName.value,
-      email: email.value,
-      phoneNumber: phoneNumber.value,
-      address: address.value,
+      passportPhoto:
+        passport.value != null
+          ? passport.value[0]
+          : props.shipmentData.passportPhoto,
+      passportP: passport.value ? true : false,
+      fullName: fullName.value ? fullName.value : props.shipmentData.fullName,
+      email: email.value ? email.value : props.shipmentData.email,
+      phoneNumber: phoneNumber.value
+        ? phoneNumber.value
+        : props.shipmentData.phoneNumber,
+      address: address.value ? address.value : props.shipmentData.address,
 
       // shipment details
-      shipmentPhoto: shipmentPhoto.value[0],
-      shipment: shipment.value,
-      location: location.value,
-      symbol: symbol.value,
-      shippingCost: shippingCostAmount.value,
-      units: units.value,
-      price: priceAmount.value,
-      vat: vatAmount.value,
-      insurance: insuranceAmount.value,
-      serviceCharge: serviceChargeAmount.value,
-      dueDate: dueDate.value,
+      shipmentPhoto:
+        shipmentPhoto.value != null
+          ? shipmentPhoto.value[0]
+          : props.shipmentData.shipmentPhoto,
+      shipmentP: shipmentPhoto.value ? true : false,
+      shipment: shipment.value ? shipment.value : props.shipmentData.shipment,
+      location: location.value ? location.value : props.shipmentData.location,
+      symbol: symbol.value ? symbol.value : props.shipmentData.symbol,
+      shippingCost: shippingCost.value
+        ? shippingCostAmount.value
+        : props.shipmentData.shippingCost,
+      units: units.value ? units.value : props.shipmentData.units,
+      price: price.value ? priceAmount.value : props.shipmentData.price,
+      vat: vat.value ? vatAmount.value : props.shipmentData.vat,
+      insurance: insurance.value
+        ? insuranceAmount.value
+        : props.shipmentData.insurance,
+      serviceCharge: serviceCharge.value
+        ? serviceChargeAmount.value
+        : props.shipmentData.serviceCharge,
+      status: status.value ? status.value : props.shipmentData.status,
+      dueDate: dueDate.value ? dueDate.value : props.shipmentData.dueDate,
     };
 
     console.log(payload);
-    adminflow.dispatch("addShipment", payload);
+    adminflow.dispatch("editShipment", payload);
     setTimeout(() => {
       emits("closeDialog");
     }, 2000);
@@ -348,6 +390,17 @@ const submit = () => {
 
 const countriess = computed(() => {
   return countries;
+});
+
+//symbol
+const symbol = ref("");
+const shipmentsymbol = computed({
+  get() {
+    return symbol.value ? symbol.value : props.shipmentData.symbol;
+  },
+  set(val) {
+    symbol.value = val;
+  },
 });
 
 const symbolArray = ref([]);
@@ -367,34 +420,96 @@ getCurrencies(countriess.value);
 const passport = ref(null);
 const passportImage = ref(null);
 const fullName = ref("");
-const email = ref("");
-const phoneNumber = ref("");
-const address = ref("");
 
 console.log(props.shipmentData.fullName);
 
-const userfullName = computed({
+// todo getting the shipment data
+
+const shipmentfullName = computed({
   get() {
-    return props.shipmentData.fullName;
+    return fullName.value ? fullName.value : props.shipmentData.fullName;
   },
   set(val) {
     fullName.value = val;
   },
 });
 
-//shipment data
-const shipmentPhoto = ref(null);
-// add in payload
-// const shipmentStatus = ref("Ongoing");
-const shipmentPhotoImage = ref(null);
-const shipment = ref("");
-const location = ref("");
+const email = ref("");
+const shipmentEmail = computed({
+  get() {
+    return props.shipmentData.email;
+  },
+  set(val) {
+    email.value = val;
+  },
+});
 
-//symbol
-const symbol = ref("$");
+const phoneNumber = ref("");
+const shipmentphoneNumber = computed({
+  get() {
+    return props.shipmentData.phoneNumber;
+  },
+  set(val) {
+    phoneNumber.value = val;
+  },
+});
+
+const address = ref("");
+const shipmentAddress = computed({
+  get() {
+    return props.shipmentData.address;
+  },
+  set(val) {
+    address.value = val;
+  },
+});
+
+//shipment data
+const status = ref("");
+const shipmentStatus = computed({
+  get() {
+    return status.value ? status.value : props.shipmentData.status;
+  },
+  set(val) {
+    status.value = val;
+  },
+});
+
+const shipmentPhoto = ref(null);
+const shipmentPhotoImage = ref(null);
+
+const shipment = ref("");
+const shipmentName = computed({
+  get() {
+    return props.shipmentData.shipment;
+  },
+  set(val) {
+    shipment.value = val;
+  },
+});
+
+const location = ref("");
+const shipmentLocation = computed({
+  get() {
+    return props.shipmentData.location;
+  },
+  set(val) {
+    location.value = val;
+  },
+});
 
 //for shipping cost
 const shippingCost = ref("");
+
+const shipmentshippingCost = computed({
+  get() {
+    return props.shipmentData.shippingCost;
+  },
+  set(val) {
+    shippingCost.value = val;
+  },
+});
+
 const shippingCostAmount = computed({
   get() {
     let val = parseInt(shippingCost.value);
@@ -402,7 +517,7 @@ const shippingCostAmount = computed({
     if (val === "NaN") {
       return "";
     } else {
-      return `${symbol.value[0]} ${val}`;
+      return `${shipmentsymbol.value[0]} ${val}`;
     }
   },
   async set(val) {
@@ -411,7 +526,7 @@ const shippingCostAmount = computed({
       val = "";
     }
     const firstChar = val.charAt(0);
-    if (firstChar === symbol.value[0]) {
+    if (firstChar === shipmentsymbol.value[0]) {
       val = val.substring(1);
     }
 
@@ -426,8 +541,27 @@ const shippingCostAmount = computed({
 
 //units
 const units = ref("");
+const shipmentUnits = computed({
+  get() {
+    return props.shipmentData.units;
+  },
+  set(val) {
+    units.value = val;
+  },
+});
 
+//shipment price
 const price = ref("");
+
+const shipmentPrice = computed({
+  get() {
+    return props.shipmentData.price;
+  },
+  set(val) {
+    price.value = val;
+  },
+});
+
 const priceAmount = computed({
   get() {
     let val = parseInt(price.value);
@@ -435,7 +569,7 @@ const priceAmount = computed({
     if (val === "NaN") {
       return "";
     } else {
-      return `${symbol.value[0]} ${val}`;
+      return `${shipmentsymbol.value[0]} ${val}`;
     }
   },
   async set(val) {
@@ -444,7 +578,7 @@ const priceAmount = computed({
       val = "";
     }
     const firstChar = val.charAt(0);
-    if (firstChar === symbol.value[0]) {
+    if (firstChar === shipmentsymbol.value[0]) {
       val = val.substring(1);
     }
 
@@ -459,6 +593,16 @@ const priceAmount = computed({
 
 //VAT
 const vat = ref("");
+
+const shipmentVat = computed({
+  get() {
+    return props.shipmentData.vat;
+  },
+  set(val) {
+    vat.value = val;
+  },
+});
+
 const vatAmount = computed({
   get() {
     let val = parseInt(vat.value);
@@ -466,7 +610,7 @@ const vatAmount = computed({
     if (val === "NaN") {
       return "";
     } else {
-      return `${symbol.value[0]} ${val}`;
+      return `${shipmentsymbol.value[0]} ${val}`;
     }
   },
   async set(val) {
@@ -475,7 +619,7 @@ const vatAmount = computed({
       val = "";
     }
     const firstChar = val.charAt(0);
-    if (firstChar === symbol.value[0]) {
+    if (firstChar === shipmentsymbol.value[0]) {
       val = val.substring(1);
     }
 
@@ -490,6 +634,16 @@ const vatAmount = computed({
 
 //insurance
 const insurance = ref("");
+
+const shipmentInsurance = computed({
+  get() {
+    return props.shipmentData.insurance;
+  },
+  set(val) {
+    insurance.value = val;
+  },
+});
+
 const insuranceAmount = computed({
   get() {
     let val = parseInt(insurance.value);
@@ -497,7 +651,7 @@ const insuranceAmount = computed({
     if (val === "NaN") {
       return "";
     } else {
-      return `${symbol.value[0]} ${val}`;
+      return `${shipmentsymbol.value[0]} ${val}`;
     }
   },
   async set(val) {
@@ -506,7 +660,7 @@ const insuranceAmount = computed({
       val = "";
     }
     const firstChar = val.charAt(0);
-    if (firstChar === symbol.value[0]) {
+    if (firstChar === shipmentsymbol.value[0]) {
       val = val.substring(1);
     }
 
@@ -521,6 +675,16 @@ const insuranceAmount = computed({
 
 //service charge
 const serviceCharge = ref("");
+
+const shipmentserviceCharge = computed({
+  get() {
+    return props.shipmentData.serviceCharge;
+  },
+  set(val) {
+    serviceCharge.value = val;
+  },
+});
+
 const serviceChargeAmount = computed({
   get() {
     let val = parseInt(serviceCharge.value);
@@ -528,16 +692,17 @@ const serviceChargeAmount = computed({
     if (val === "NaN") {
       return "";
     } else {
-      return `${symbol.value[0]} ${val}`;
+      return `${shipmentsymbol.value[0]} ${val}`;
     }
   },
+
   async set(val) {
     // check if the first Character is ₦ and remove it
     if (val == null) {
       val = "";
     }
     const firstChar = val.charAt(0);
-    if (firstChar === symbol.value[0]) {
+    if (firstChar === shipmentsymbol.value[0]) {
       val = val.substring(1);
     }
 
@@ -552,6 +717,15 @@ const serviceChargeAmount = computed({
 
 // date dialog
 const dueDate = ref("");
+
+const shipmentdueDate = computed({
+  get() {
+    return props.shipmentData.dueDate;
+  },
+  set(val) {
+    dueDate.value = val;
+  },
+});
 
 //show image function for profile photo
 const showImage = () => {

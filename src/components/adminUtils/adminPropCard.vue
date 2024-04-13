@@ -34,7 +34,7 @@
           <p class="text-accent text-left">
             Status :
             <VChip
-              :color="colors[data.status]"
+              :color="colors[data.status.toLowerCase()]"
               class="text-capitalize"
               size="x-small"
               >{{ data.status }}</VChip

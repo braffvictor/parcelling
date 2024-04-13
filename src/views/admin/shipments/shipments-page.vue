@@ -78,17 +78,17 @@ const shipments = computed(() => {
 
 const completedShipment = computed(() => {
   return adminflow.state.shipments.filter((shipment) => {
-    return shipment.status == "completed";
+    return shipment.status == "Completed";
   });
 });
 const ongoingShipment = computed(() => {
   return adminflow.state.shipments.filter((shipment) => {
-    return shipment.status == "ongoing";
+    return shipment.status == "Ongoing";
   });
 });
 const closedShipment = computed(() => {
   return adminflow.state.shipments.filter((shipment) => {
-    return shipment.status == "closed";
+    return shipment.status == "Closed";
   });
 });
 </script>

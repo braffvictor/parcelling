@@ -34,7 +34,7 @@
             <!-- <VDivider color="white" thickness="3" class="mx-3 d-block d-md-none rounded"/> -->
             <VCol cols="12">
               <p
-                class="text-left text-primary text-md-h6 font-weight-bold text-subtitle-1"
+                class="text-center text-white text-md-left text-md-h6 font-weight-bold text-subtitle-1"
               >
                 Customer Profile:
               </p>
@@ -51,7 +51,7 @@
                     width="100"
                     height="100"
                     cover
-                    class="rounded-circle"
+                    class="rounded-circle text-center mx-auto"
                   >
                   </v-img>
                 </v-card>
@@ -96,7 +96,7 @@
 
             <VCol cols="12">
               <p
-                class="text-left text-primary text-md-h6 font-weight-bold text-subtitle-1"
+                class="text-center text-white text-md-left text-md-h6 font-weight-bold text-subtitle-1"
               >
                 Parcel Data:
               </p>
@@ -148,7 +148,7 @@
               >
                 Shipping Cost:
                 <span class="font-weight-bold text-white"
-                  >{{ shipment.shippingCost }}
+                  >{{ shipment.shippingCost }}.00
                 </span>
               </p>
               <VDivider class="my-2" />
@@ -166,7 +166,7 @@
               >
                 Price :
                 <span class="font-weight-bold text-white">
-                  {{ shipment.price }}
+                  {{ shipment.price }}.00
                 </span>
               </p>
               <VDivider class="my-2" />
@@ -175,7 +175,7 @@
               >
                 VAT:
                 <span class="font-weight-bold text-white">
-                  {{ shipment.vat }}</span
+                  {{ shipment.vat }}.00</span
                 >
               </p>
               <VDivider class="my-2" />
@@ -184,7 +184,7 @@
               >
                 Insurance:
                 <span class="font-weight-bold text-white">
-                  {{ shipment.insurance }}</span
+                  {{ shipment.insurance }}.00</span
                 >
               </p>
               <VDivider class="my-2" />
@@ -192,9 +192,9 @@
                 class="text-left text-primary font-weight-light text-md-subtitle-1 text-subtitle-2"
               >
                 Service Charge:
-                <span class="font-weight-bold text-white">{{
-                  shipment.serviceCharge
-                }}</span>
+                <span class="font-weight-bold text-white"
+                  >{{ shipment.serviceCharge }}.00</span
+                >
               </p>
               <VDivider class="my-2" />
               <p
