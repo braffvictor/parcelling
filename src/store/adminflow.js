@@ -174,7 +174,7 @@ export default createStore({
 
       //added prop to arrange array
       payload.formattedDate = date;
-      payload.status = "ongoing";
+      payload.status = "Ongoing";
 
       let trackingCode = "";
 
