@@ -29,6 +29,17 @@
                 : data.email
             }}
           </p>
+          <p
+            class="text-primary font-weight-bold text-left"
+            @click="contentCopy(data)"
+          >
+            {{ data.trackingCode }}
+            <VIcon
+              size="x-small"
+              icon="fa-clone"
+              @click="contentCopy(data)"
+            ></VIcon>
+          </p>
           <p class="text-accent text-left">{{ data.shipment }}</p>
           <p class="text-accent text-left">{{ data.dueDate }}</p>
           <p class="text-accent text-left">
@@ -71,6 +82,7 @@
 // import youth from "@/assets/youth.jpg";
 
 import adminflow from "@/store/adminflow";
+import userflow from "@/store/userflow";
 import { reactive } from "vue";
 
 //vue functions
@@ -102,6 +114,18 @@ const props = defineProps({
     },
   },
 });
+
+const contentCopy = (data) => {
+  navigator.clipboard.writeText(data.trackingCode);
+
+  userflow.dispatch("initAlert", {
+    type: "success",
+    message: `Tracking ID for ${data.fullName} Copied Successfully`,
+    is: true,
+    close: true,
+    timer: 5000,
+  });
+};
 </script>
 
 <style></style>

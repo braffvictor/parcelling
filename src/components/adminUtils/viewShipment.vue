@@ -210,7 +210,7 @@
               <p
                 class="text-left text-center text-uppercase text-primary text-md-subtitle-1 font-weight-light text-subtitle-2"
               >
-                Parcel Status: {{ shipment.status }} ({{
+                Parcel Status: {{ textProgress() }} ({{
                   checkProgress(shipment.status)
                 }}%)
                 <!-- <v-progress-circular :indeterminate="loading" size="small" color="white" model-value="50"></v-progress-circular> -->
@@ -256,6 +256,16 @@ function colorProgress(status) {
     return "red";
   } else {
     return "primary";
+  }
+}
+
+function textProgress() {
+  if (props.shipment.progress == "100") {
+    return "Completed";
+  } else if (props.shipment.progress == "0") {
+    return "Closed";
+  } else {
+    return props.shipment.status;
   }
 }
 

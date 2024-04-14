@@ -79,20 +79,18 @@ const actions = computed(() => {
       text: "View",
       color: "primary",
       action: (event, data) => {
-        console.log(data);
+        shipment.value = data;
         dialog.value = true;
         type.value = "viewShipment";
-        shipment.value = data;
       },
     },
     {
       text: "Edit",
       color: "accent",
       action: (event, data) => {
-        console.log(data);
+        shipment.value = data;
         dialog.value = true;
         type.value = "editShipment";
-        shipment.value = data;
       },
     },
   ];
