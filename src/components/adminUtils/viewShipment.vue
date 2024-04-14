@@ -210,13 +210,15 @@
               <p
                 class="text-left text-center text-uppercase text-primary text-md-subtitle-1 font-weight-light text-subtitle-2"
               >
-                Parcel Status: {{ shipment.status }}
+                Parcel Status: {{ shipment.status }} ({{
+                  checkProgress(shipment.status)
+                }}%)
                 <!-- <v-progress-circular :indeterminate="loading" size="small" color="white" model-value="50"></v-progress-circular> -->
               </p>
               <v-progress-linear
                 buffer-value="0"
-                color="primary"
-                model-value="50"
+                :color="colorProgress(shipment.status)"
+                :model-value="checkProgress(shipment.status)"
                 rounded="lg"
                 striped
                 height="7"
@@ -236,6 +238,26 @@
 <script setup>
 import { defineProps } from "vue";
 // const emits = defineEmits(["closeDialog"]);
+
+function checkProgress(status) {
+  if (status == "Completed") {
+    return "100";
+  } else if (status == "Closed") {
+    return "0";
+  } else {
+    return props.shipment.progress;
+  }
+}
+
+function colorProgress(status) {
+  if (status == "Completed" || props.shipment.progress == "100") {
+    return "green";
+  } else if (status == "Closed" || props.shipment.progress == "0") {
+    return "red";
+  } else {
+    return "primary";
+  }
+}
 
 const props = defineProps({
   shipment: {

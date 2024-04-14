@@ -139,6 +139,31 @@
               </VCol>
 
               <VCol cols="12">
+                <VSelect
+                  :items="[
+                    '0',
+                    '10',
+                    '20',
+                    '30',
+                    '40',
+                    '50',
+                    '60',
+                    '70',
+                    '80',
+                    '90',
+                    '100',
+                  ]"
+                  v-model="shipmentProgress"
+                  label="Shipment Progress"
+                  color="primary"
+                  hint="Closed(0), Ongoing(10-90), Completed(100)"
+                  variant="outlined"
+                  item-color="primary"
+                  class="text-white text-capitalize"
+                ></VSelect>
+              </VCol>
+
+              <VCol cols="12">
                 <v-file-input
                   v-model="shipmentPhoto"
                   color="primary"
@@ -335,6 +360,17 @@ const props = defineProps({
 
 //form control
 const valid = ref(true);
+
+const progress = ref("");
+const shipmentProgress = computed({
+  get() {
+    return progress.value ? progress.value : props.shipmentData.progress;
+  },
+  set(val) {
+    progress.value = val;
+  },
+});
+
 //submit function
 const submit = () => {
   if (valid.value) {
@@ -375,16 +411,17 @@ const submit = () => {
         ? serviceChargeAmount.value
         : props.shipmentData.serviceCharge,
       status: status.value ? status.value : props.shipmentData.status,
+      progress: progress.value ? progress.value : props.shipmentData.progress,
       dueDate: dueDate.value ? dueDate.value : props.shipmentData.dueDate,
     };
 
-    console.log(payload);
+    // console.log(payload);
     adminflow.dispatch("editShipment", payload);
     setTimeout(() => {
       emits("closeDialog");
     }, 2000);
   } else {
-    console.log("not submitted");
+    console.log("Invalid Form");
   }
 };
 

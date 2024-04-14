@@ -17,15 +17,15 @@
         <div>
           <p class="text-accent text-left text-h6">
             {{
-              data.fullName.length > 12 && $vuetify.display.mdAndDown
-                ? data.fullName.slice(0, 10) + "..."
+              data.fullName.length > 16 && $vuetify.display.mdAndDown
+                ? data.fullName.slice(0, 15) + "..."
                 : data.fullName
             }}
           </p>
           <p class="text-accent text-left">
             {{
-              data.email.length > 10 && $vuetify.display.mdAndDown
-                ? data.email.slice(0, 10) + "..."
+              data.email.length > 16 && $vuetify.display.mdAndDown
+                ? data.email.slice(0, 15) + "..."
                 : data.email
             }}
           </p>
