@@ -14,7 +14,7 @@
     ></VBtn>
     <v-app-bar
       color="accent"
-      class="align-baseline"
+      class="align-center"
       :height="$vuetify.display.mdAndDown ? '50' : '65'"
       flat
     >
@@ -30,7 +30,15 @@
 
       <VSpacer />
       <div class="mr-4">
-        <VIcon @click="signOut" icon="fa-user-circle" size="small"></VIcon>
+        <VBtn @click="signOut" color="red" size="small" variant="outlined"
+          >Logout
+          <VIcon
+            icon="fa-sign-out"
+            class="ml-2"
+            color="red"
+            size="small"
+          ></VIcon>
+        </VBtn>
       </div>
     </v-app-bar>
 

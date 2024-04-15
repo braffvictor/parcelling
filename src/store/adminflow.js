@@ -187,7 +187,7 @@ export default createStore({
       }
 
       payload.trackingCode = getTrackingCode();
-      payload.progress = "50";
+      payload.progress = "10";
 
       await addDoc(colref, payload)
         .then((docRef) => {

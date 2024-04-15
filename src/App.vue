@@ -9,6 +9,7 @@
 
 <script setup>
 import alertComp from "./components/utils/alertComp.vue";
+
 // import { useRoute } from "vue-router";
 // import userLayout from "./layouts/userLayout.vue";
 // import adminLayout from "./layouts/adminLayout.vue";

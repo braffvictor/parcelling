@@ -49,6 +49,7 @@
                   style="border: 1px solid #ea580c; width: 70px; height: 4px"
                 ></p>
               </VCardText>
+
               <VCardText class="my-0 py-0">
                 <VTextField
                   v-model="searchCode"
@@ -62,9 +63,11 @@
               <VCardText class="my-0 py-0">
                 <VBtn
                   color="primary"
-                  @click="getShipment"
+                  @click.prevent="getShipment"
                   variant="flat"
                   block
+                  :disabled="updateBtn"
+                  type="submit"
                   size="large"
                   >Proceed</VBtn
                 >
@@ -332,72 +335,23 @@
         </VCol>
       </v-row>
     </main>
-
-    <!-- <p
-            class="text-accent my-4 font-weight-bold text-md-subtitle-1 text-subtitle-2 text-md-left"
-          >
-            Track your global TikTok, ASOS, eBay, Amazon and Shopify orders with
-            Parcel Monitor
-          </p>
-          <p
-            class="text-accent my-4 text-md-subtitle-2 text-body-1 text-md-left"
-          >
-            With Parcel Monitor, you can follow your parcels every step of the
-            way simply by entering your tracking numbers, regardless of where
-            you purchase them from. No more waiting until your order arrives to
-            find out what happened to it along the way! Our easy-to-use parcel
-            tracking tool makes it easy to keep track of all your orders in one
-            place. So whether you're an avid shopper on any of the
-            aforementioned e-commerce platforms or you just like to order from
-            time to time, Parcel Monitor is perfect for you.
-          </p>
-        </VCol>
-        <VCol cols="12" md="6">
-          <p
-            class="text-accent my-4 font-weight-bold text-md-subtitle-1 text-subtitle-2 text-md-left"
-          >
-            Enhance your online shopping experience with Parcel Monitor’s free
-            parcel tracking tool
-          </p>
-          <p
-            class="text-accent my-4 text-md-subtitle-2 text-body-1 text-md-left"
-          >
-            Make purchases from your favorite e-commerce retailer or online
-            marketplace without having to worry about your orders’ whereabouts.
-            Regardless of the store you buy from or the carrier they use to ship
-            your package, you can track your parcel as it travels around the
-            world. With our parcel tracking service, you can keep track of the
-            delivery’s progress and get peace of mind knowing that it is on the
-            way to your doorstep.
-          </p>
-
-          <p
-            class="text-accent my-4 font-weight-bold text-md-subtitle-1 text-subtitle-2 text-md-left"
-          >
-            Parcel tracking in the UK, US, Philippines, Canada, China, Australia
-            and the rest of the world
-          </p>
-          <p
-            class="text-accent my-4 text-md-subtitle-2 text-body-1 text-md-left"
-          >
-            Looking for a reliable way to track your international parcels? Look
-            no further! Parcel Monitor’s parcel tracking tool provides
-            up-to-date information on the whereabouts of your packages for free.
-            Whether you're looking for a service that covers the United Kingdom,
-            United States, Philippines, Canada, China, Australia or the rest of
-            the world, we've got you covered. We work with some of the most
-            reliable global carriers including DHL, UPS and Canada Post, so you
-            can rest assured that your parcels are in good hands.
-          </p>
-        </VCol>
-      </v-row>
-    </main> -->
   </div>
 </template>
 <script setup>
 import adminflow from "@/store/adminflow";
 import userflow from "@/store/userflow";
-import { ref, onBeforeMount, onMounted } from "vue";
+import { ref, onBeforeMount, onMounted, watch } from "vue";
+
+const updateBtn = ref(true);
+const searchCode = ref("");
+
+watch(searchCode, () => {
+  if (searchCode.value != "") {
+    updateBtn.value = false;
+  } else {
+    updateBtn.value = true;
+  }
+});
 
 onBeforeMount(() => {
   window.scrollTo({
@@ -416,7 +370,6 @@ const disableCard = ref(false);
 const shipment = ref(null);
 
 const show = ref(false);
-const searchCode = ref("");
 
 function getShipment() {
   const trackingCode = adminflow.state.shipments.find((shipment) => {
@@ -436,7 +389,7 @@ function getShipment() {
         type: "success",
         message: `${shipment.value.fullName} Shipment Found For This Tracking ID "${searchCode.value}" `,
         is: true,
-        timer: 4000,
+        timer: 7000,
         close: true,
       });
       searchCode.value = "";

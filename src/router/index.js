@@ -108,20 +108,29 @@ const routes = [
         name: "Dynamic Shipment",
         component: () =>
           import("../views/admin/shipments/dynamic-shipments.vue"),
+        beforeEnter(to) {
+          const id = to.params.id;
+          const params = ["all", "closed", "completed", "ongoing"];
+          const exists = params.some((exist) => exist == id);
+          console.log(exists);
+
+          if (!exists) {
+            return {
+              name: "error-page",
+              params: { pathMatch: to.path.substring(1).split("/") },
+              query: to.query,
+              hash: to.hash,
+            };
+          }
+        },
       },
     ],
   },
-  // {
-  //   path: "/about",
-  //   name: "about",
-  //   route level code-splitting
-  //   this generates a separate chunk (about.[hash].js) for this route
-  //   which is lazy-loaded when the route is visited.
-  // component: () =>import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
-  //   meta: {
-  // layout: "user",
-  //   },
-  // },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "error-page",
+    component: () => import("../views/error-page.vue"),
+  },
 ];
 
 const router = createRouter({

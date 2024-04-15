@@ -67,7 +67,12 @@ const dashCards = computed(() => {
       length: adminflow.state.shipments.length,
       to: "/admin/shipments",
     },
-  ];
+  ].filter((dash) => {
+    return (
+      dash.text.includes(search.value) ||
+      dash.text.toLowerCase().includes(search.value)
+    );
+  });
 });
 
 const search = ref("");
