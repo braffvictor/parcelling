@@ -112,7 +112,6 @@ const routes = [
           const id = to.params.id;
           const params = ["all", "closed", "completed", "ongoing"];
           const exists = params.some((exist) => exist == id);
-          console.log(exists);
 
           if (!exists) {
             return {

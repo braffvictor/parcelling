@@ -458,8 +458,6 @@ const passport = ref(null);
 const passportImage = ref(null);
 const fullName = ref("");
 
-console.log(props.shipmentData.fullName);
-
 // todo getting the shipment data
 
 const shipmentfullName = computed({

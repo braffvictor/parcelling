@@ -60,7 +60,6 @@ export default createStore({
               URL = photoUrl;
             })
             .catch((error) => {
-              console.log(error.code);
               userflow.dispatch("initAlert", {
                 type: "error",
                 timer: 10000,
@@ -70,7 +69,6 @@ export default createStore({
             });
         })
         .catch((error) => {
-          console.log(error.code);
           userflow.dispatch("initAlert", {
             type: "error",
             timer: 10000,

@@ -304,7 +304,7 @@ const props = defineProps({
 });
 
 //form control
-const valid = ref(false);
+const valid = ref(true);
 //submit function
 const submit = () => {
   if (valid.value) {

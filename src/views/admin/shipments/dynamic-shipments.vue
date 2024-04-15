@@ -29,13 +29,18 @@
       justify="center"
       v-if="dynamiCard[$route.params.id].array.length > 0"
     >
-      <VCol
-        cols="11"
-        md="7"
-        v-for="shipment in dynamiCard[$route.params.id].array"
-        :key="shipment.id"
-      >
-        <AdminPropCard :actions="actions" :data="shipment" />
+      <VCol cols="12" class="ma-0 pa-0">
+        <TransitionGroup name="list">
+          <VCol
+            class="mx-auto text-center"
+            cols="11"
+            md="7"
+            v-for="shipment in dynamiCard[$route.params.id].array"
+            :key="shipment.id"
+          >
+            <AdminPropCard :actions="actions" :data="shipment" />
+          </VCol>
+        </TransitionGroup>
       </VCol>
     </v-row>
 
@@ -151,7 +156,6 @@ const completedShipment = computed(() => {
     );
   });
 });
-console.log(completedShipment.value);
 const ongoingShipment = computed(() => {
   return adminflow.state.shipments.filter((shipment) => {
     return (
@@ -180,4 +184,22 @@ const closedShipment = computed(() => {
 });
 </script>
 
-<style></style>
+<style>
+.list-move, /* apply transition to moving elements */
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+/* ensure leaving items are taken out of layout flow so that moving
+   animations can be calculated correctly. */
+.list-leave-active {
+  position: absolute;
+}
+</style>
