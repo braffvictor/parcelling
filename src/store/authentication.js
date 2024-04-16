@@ -169,14 +169,15 @@ export default createStore({
       });
     },
 
-    getUserData({ commit }, { uid }) {
+    async getUserData({ commit }, { uid }) {
       const currentUser = doc(db, "users", uid);
-      onSnapshot(currentUser, (docRef) => {
+      onSnapshot(currentUser, async (docRef) => {
         if (docRef.exists) {
           const userData = docRef.data();
           adminflow.dispatch("initApp");
 
           commit("setUser", userData);
+          console.log(this.state.user);
         } else {
           router.push("/login");
         }

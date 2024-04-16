@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="" v-if="authentication.state.user">
     <VBtn
       color="primary"
       @click="dialog = true"
@@ -104,6 +104,8 @@
     />
   </div>
 
+  <div v-else style="min-height: 100vh" class="bg-accent"></div>
+
   <!-- app bar -->
 </template>
 
@@ -131,13 +133,13 @@ const drawer = ref(false);
 
 const size = ref(vuetify.display.mdAndDown);
 
-onMounted(() => {
-  console.log("mounting");
+onMounted(async () => {
+  await authentication.dispatch("userWatch");
+  const user = authentication.state.user;
+  console.log(user);
 });
 
 onBeforeMount(() => {
-  authentication.dispatch("userWatch");
-  console.log("before mounting");
   if (size.value) {
     drawer.value = false;
   } else {
